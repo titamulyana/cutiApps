@@ -55,9 +55,9 @@ if ($_SESSION['hak_akses'] != "pegawai") {
 	<![endif]-->
 </head>
 <?php
-// include "dist/koneksi.php";
-// $tampilCuti=mysqli_query($con,"SELECT * FROM tb_cuti WHERE nik='$_SESSION[nik]'");
-// $jmlcut=mysqli_num_rows($tampilCuti);
+include './dist/koneksi2.php';
+$nik = $_SESSION['nik'];
+$query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
 ?>
 
 <body class="hold-transition skin-red fixed sidebar-mini">
@@ -71,7 +71,7 @@ if ($_SESSION['hak_akses'] != "pegawai") {
             <li class="dropdown messages-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-inbox"></i><span class="label label-warning"></span></a>
               <ul class="dropdown-menu">
-                <li class="header">Anda memiliki pemberitahuan cuti</li>
+                <li class="header"></li>
               </ul>
             </li>
             <li class="dropdown user user-menu">
@@ -117,12 +117,29 @@ if ($_SESSION['hak_akses'] != "pegawai") {
           <li class="treeview"><a href="home-pegawai.php?page=form-permohonan-cuti-tahunan"><i class="fa fa-book"></i> <span>Permohonan Cuti</span></i></a>
           <li class="treeview"><a href="home-pegawai.php?page=history-cuti-pegawai"><i class="fa fa-exchange"></i> <span>History</span></a></li>
           <?php
-          include './dist/koneksi2.php';
-          $nik = $_SESSION['nik'];
-          $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
           if ($query && mysqli_num_rows($query) > 0) {
-            echo "<li class='treeview'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i> <span>Approval Cuti</span></i></a>
-          ";
+            $dataArray = array();
+            while ($row = mysqli_fetch_assoc($query)) {
+              $dataArray[] = $row;
+            }
+            $nikList = "'" . implode("','", array_column($dataArray, 'nik')) . "'";
+            $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik in ($nikList) AND depApproval IS NULL");
+            $numRows = mysqli_num_rows($dataCuti);
+            if ($numRows > 0) {
+              echo "<li class='treeview'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i>
+                <span>Approval Cuti</span>
+                <div class='custom-btn' style='display: inline-block;
+                background-color: yellow;
+                padding: 2px;
+                border-radius: 5px;
+                font-size: 14px;'
+                disabled>
+                <small>Task</small>
+                </div></i></a>";
+            } else {
+              echo "<li class='treeview'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i> <span>Approval Cuti</span></i></a>";
+            }
+
           }
           ?>
         </ul>
