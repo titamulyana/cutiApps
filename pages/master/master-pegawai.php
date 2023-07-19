@@ -39,10 +39,10 @@
 		
 		else{
 		$insert = "INSERT INTO tb_pegawai (nip, nama, jk, jab, tmp_lhr, tgl_lhr, gol_darah, agama, status, telp, alamat) VALUES ('$nip', '$nama', '$jk', '$jab', '$tmp_lhr', '$tgl_lhr', '$gol_darah', '$agama', '$status', '$telp', '$alamat')";
-		$query = mysqli_query ($insert);
+		$query = mysqli_query($con,$insert);
 		
 		$insert_user = "INSERT INTO tb_users (id_user, nama_user, password, hak_akses, aktif) VALUES ('$nip', '$nama', '123', 'Pegawai', 'N')";
-		$query = mysqli_query ($insert_user);
+		$query = mysqli_query($con,$insert_user);
 		
 		if($query){
 			echo "<div class='register-logo'><b>Input Data</b> Successful!</div>	
