@@ -8,9 +8,9 @@
 <div class="register-box">
 <?php
 include "dist/koneksi.php";
-if (isset($_GET['nip'])) {
-	$nip = $_GET['nip'];
-	$query   = "SELECT * FROM tb_pegawai WHERE nip='$nip'";
+if (isset($_GET['nik'])) {
+	$nik = $_GET['nik'];
+	$query   = "SELECT * FROM tb_users WHERE nik='$nik'";
 	$hasil   = mysqli_query($con,$query);
 	$data    = mysqli_fetch_array($hasil);
 	}
@@ -18,17 +18,14 @@ if (isset($_GET['nip'])) {
 		die ("Error. No Kode Selected! ");	
 	}
 	
-	if (!empty($nip) && $nip != "") {
-		$delete = "DELETE FROM tb_pegawai WHERE nip='$nip'";
-		$sqldel = mysqli_query ($delete);
-		
-		$deluser = "DELETE FROM tb_users WHERE id_user='$nip'";
-		$sql = mysqli_query ($deluser);
+	if (!empty($nik) && $nik != "") {
+		$delete = "UPDATE tb_users SET soft_delete='1' WHERE nik='$nik'";
+		$sqldel = mysqli_query($con,$delete);
 		
 		if ($sqldel) {		
 			echo "<div class='register-logo'><b>Delete</b> Successful!</div>	
 				<div class='register-box-body'>
-					<p>Data Pegawai ".$nip." Berhasil di Hapus</p>
+					<p>Data Pegawai ".$nik." Berhasil di Hapus</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
@@ -41,6 +38,6 @@ if (isset($_GET['nip'])) {
 			echo "<div class='register-logo'><b>Oops!</b> 404 Error Server.</div>";	
 		}
 	}
-	mysql_close($Open);
+	mysqli_close($con);
 ?>
 </div>

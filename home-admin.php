@@ -1,18 +1,19 @@
 <?php
 session_start();
-if(!isset($_SESSION['nik'])){
-    die("<b>Oops!</b> Access Failed.
+if (!isset($_SESSION['nik'])) {
+	die("<b>Oops!</b> Access Failed.
 		<p>Sistem Logout. Anda harus melakukan Login kembali.</p>
 		<button type='button' onclick=location.href='index.php'>Back</button>");
 }
-if($_SESSION['hak_akses']!="hrd"){
-    die("<b>Oops!</b> Access Failed.
+if ($_SESSION['hak_akses'] != "hrd") {
+	die("<b>Oops!</b> Access Failed.
 		<p>Anda Bukan Admin.</p>
 		<button type='button' onclick=location.href='index.php'>Back</button>");
 }
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +46,7 @@ if($_SESSION['hak_akses']!="hrd"){
 	<!-- DataTables -->
 	<link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 	<script type="text/javascript" src="plugins/datatables/jquery.js"></script>
-			
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -53,82 +54,133 @@ if($_SESSION['hak_akses']!="hrd"){
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
+
 <body class="hold-transition skin-red fixed sidebar-mini">
-<div class="wrapper">
-	<header class="main-header">
-		<a href="home-admin.php" class="logo"><span class="logo-mini">CUTI</span><span class="logo-lg"><b>Cuti</b> ONLINE</span></a>
-		<nav class="navbar navbar-static-top" role="navigation">
-			<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
-			<div class="navbar-custom-menu">
-				<ul class="nav navbar-nav">
-					<li class="dropdown user user-menu">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
-							<span class="hidden-xs">Aplikasi Pengajuan Cuti Online</span> &nbsp;<i class="fa fa-angle-down"></i>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="user-header">
-								<img src='dist/img/profile/no-image.jpg' class='img-circle' alt='User Image'>
-								<p>Welcome - <?php echo $_SESSION['nama_peg'] ?><small><?php echo $_SESSION['hak_akses'] ?></small></p>
-							</li>
-							<li class="user-body">
-								<div class="row">
-								</div>
-							</li>
-							<li class="user-footer">
-								<div class="pull-left">
-									<?php echo date("d-m-Y");?>
-								</div>
-								<div class="pull-right">
-								  <a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
-								</div>
-							</li>
+	<div class="wrapper">
+		<header class="main-header">
+			<a href="home-admin.php" class="logo"><span class="logo-mini">CUTI</span><span class="logo-lg"><b>Cuti</b> ONLINE</span></a>
+			<nav class="navbar navbar-static-top" role="navigation">
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<li class="dropdown user user-menu">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
+								<span class="hidden-xs">Aplikasi Pengajuan Cuti Online</span> &nbsp;<i class="fa fa-angle-down"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="user-header">
+									<img src='dist/img/profile/no-image.jpg' class='img-circle' alt='User Image'>
+									<p>Welcome - <?php echo $_SESSION['nama_peg'] ?><small><?php echo $_SESSION['hak_akses'] ?></small></p>
+								</li>
+								<li class="user-body">
+									<div class="row">
+									</div>
+								</li>
+								<li class="user-footer">
+									<div class="pull-left">
+										<?php echo date("d-m-Y"); ?>
+									</div>
+									<div class="pull-right">
+										<a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<aside class="main-sidebar">
+			<section class="sidebar">
+				<ul class="sidebar-menu">
+					<li class="header">MAIN NAVIGATION</li>
+					<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
+					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
+						<ul class="treeview-menu">
+							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
+							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai</a></li>
+							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
+						</ul>
+					</li>
+					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
+					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
+						<ul class="treeview-menu">
+							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
+							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-check-square-o"></i> Approved</a></li>
+							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-minus-square-o"></i> All</a></li>
 						</ul>
 					</li>
 				</ul>
-			</div>
-		</nav>
-	</header>
-	<aside class="main-sidebar">
-		<section class="sidebar">
-			<ul class="sidebar-menu">
-				<li class="header">MAIN NAVIGATION</li>
-				<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
-				<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
-					<ul class="treeview-menu">
-						<li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li>
-						<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-caret-right"></i> Pegawai</a></li>
-					</ul>
-				</li>
-			</ul>
-		</section>
-	</aside>
-	<div class="content-wrapper">
-		<section class="content">
-			<?php
-				$page = (isset($_GET['page']))? $_GET['page'] : "main";
+			</section>
+		</aside>
+		<div class="content-wrapper">
+			<section class="content">
+				<?php
+				$page = (isset($_GET['page'])) ? $_GET['page'] : "main";
 				switch ($page) {
-					case 'form-master-user': include "pages/master/form-master-user.php"; break;
-					case 'pre-activated-deactivate-user': include "pages/master/pre-activated-deactivate-user.php"; break;
-					case 'activated-user': include "pages/master/activated-user.php"; break;
-					case 'deactivate-user': include "pages/master/deactivate-user.php"; break;
-					case 'form-master-pegawai': include "pages/master/form-master-pegawai.php"; break;
-					case 'form-edit-data-pegawai': include "pages/master/form-edit-data-pegawai.php"; break;
-					case 'master-user': include "pages/master/master-user.php"; break;
-					case 'master-pegawai': include "pages/master/master-pegawai.php"; break;
-					case 'delete-data-pegawai': include "pages/master/delete-data-pegawai.php"; break;
-					case 'edit-data-pegawai': include "pages/master/edit-data-pegawai.php"; break;
-					case 'form-lihat-data-pegawai': include "pages/master/form-lihat-data-pegawai.php"; break;
-					default : include 'dashboard.php';	
+					case 'form-master-user':
+						include "pages/master/form-master-user.php";
+						break;
+					case 'pre-activated-deactivate-user':
+						include "pages/master/pre-activated-deactivate-user.php";
+						break;
+					case 'activated-user':
+						include "pages/master/activated-user.php";
+						break;
+					case 'deactivate-user':
+						include "pages/master/deactivate-user.php";
+						break;
+					case 'form-master-pegawai':
+						include "pages/master/form-master-pegawai.php";
+						break;
+					case 'form-edit-data-pegawai':
+						include "pages/master/form-edit-data-pegawai.php";
+						break;
+					case 'master-user':
+						include "pages/master/master-user.php";
+						break;
+					case 'master-pegawai':
+						include "pages/master/master-pegawai.php";
+						break;
+					case 'delete-data-pegawai':
+						include "pages/master/delete-data-pegawai.php";
+						break;
+					case 'edit-data-pegawai':
+						include "pages/master/edit-data-pegawai.php";
+						break;
+					case 'form-lihat-data-pegawai':
+						include "pages/master/form-lihat-data-pegawai.php";
+						break;
+					case 'form-master-departemen':
+						include "pages/master/form-master-data-departemen.php";
+						break;
+					case 'master-departemen':
+						include "pages/master/master-departemen.php";
+						break;
+					case 'form-edit-data-departemen':
+						include "pages/master/form-edit-data-departemen.php";
+						break;
+					case 'edit-data-departemen':
+						include "pages/master/edit-data-departemen.php";
+						break;
+					case 'delete-data-departemen':
+						include "pages/master/delete-data-departemen.php";
+						break;
+					case 'approval-cuti':
+						include "pages/approval-cuti-hr/approval-cuti.php";
+						break;
+					default:
+						include 'dashboard.php';
 				}
-			?>
-		</section>
+				?>
+			</section>
+		</div>
+		<footer class="main-footer">
+			<!-- <div class="pull-right hidden-xs"><b>Version</b> 1.0</div> -->
+			Copyright &copy; 2023 <a href="#" target="_blank">cuti ONLINE</a>. All rights reserved
+		</footer>
 	</div>
-	<footer class="main-footer">
-		<!-- <div class="pull-right hidden-xs"><b>Version</b> 1.0</div> -->
-		Copyright &copy; 2023 <a href="#" target="_blank">cuti ONLINE</a>. All rights reserved
-	</footer>
-</div>
 	<!-- ./wrapper -->
 	<!-- jQuery 2.1.4 -->
 	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -136,7 +188,7 @@ if($_SESSION['hak_akses']!="hrd"){
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
-	  $.widget.bridge('uibutton', $.ui.button);
+		$.widget.bridge('uibutton', $.ui.button);
 	</script>
 	<!-- Bootstrap 3.3.5 -->
 	<script src="bootstrap/js/bootstrap.min.js"></script>
@@ -166,4 +218,5 @@ if($_SESSION['hak_akses']!="hrd"){
 	<script src="plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 </body>
+
 </html>

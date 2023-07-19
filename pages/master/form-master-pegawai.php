@@ -1,45 +1,27 @@
 <section class="content-header">
-    <h1>Master<small>Data Pegawai</small></h1>
-    <ol class="breadcrumb">
-        <li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Data Pegawai</li>
-    </ol>
+	<h1>Master<small>Data Pegawai</small></h1>
+	<ol class="breadcrumb">
+		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+		<li class="active">Data Pegawai</li>
+	</ol>
 </section>
 <?php
-	include "dist/koneksi.php";
-		//fungsi kode otomatis
-		$departemen = mysqli_query($con,'SELECT * from tb_departemen');
-	// 	function kdauto($tabel, $inisial){
-	// 	$struktur   = mysqli_query($con,"SELECT * FROM $tabel");
-	// 	$field      = mysqli_field_name($struktur,0);
-	// 	$panjang    = mysqli_field_len($struktur,0);
-	// 	$qry  = mysqli_query($con,"SELECT max(".$field.") FROM ".$tabel);
-	// 	$row  = mysqli_fetch_array($qry);
-	// 	if ($row[0]=="") {
-	// 	$angka=0;
-	// 	}
-	// 	else {
-	// 	$angka= substr($row[0], strlen($inisial));
-	// 	}
-	// 	$angka++;
-	// 	$angka      =strval($angka);
-	// 	$tmp  ="";
-	// 	for($i=1; $i<=($panjang-strlen($inisial)-strlen($angka)); $i++) {
-	// 	$tmp=$tmp."0";
-	// 	}
-	// 	return $inisial.$tmp.$angka;
-	// 	}
-	// $tampilPeg=mysqli_query($con,"SELECT * FROM tb_pegawai ORDER BY nip");
+include "dist/koneksi.php";
+//fungsi kode otomatis
+$departemen = mysqli_query($con, 'SELECT * from tb_departemen');
+$jabatan = mysqli_query($con, 'SELECT * from tb_jabatan');
+$atasan = mysqli_query($con, 'SELECT * FROM tb_users WHERE tb_users.hak_akses = "pegawai"');
+$pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, departemen, status, telp from tb_users WHERE soft_delete = '0'");
 ?>
 <section class="content">
-    <div class="row">
-        <div class="col-md-12">
-			<div class="box box-primary">				
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-primary">
 				<div class="box-body">
 					<div class="panel-group">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								 <h4 class="panel-title"><i class="fa fa-plus"></i> Add Data Pegawai<a data-toggle="collapse" data-target="#formpegawai" href="#formpegawai" class="collapsed"></a></h4>
+								<h4 class="panel-title"><i class="fa fa-plus"></i> Add Data Pegawai<a data-toggle="collapse" data-target="#formpegawai" href="#formpegawai" class="collapsed"></a></h4>
 							</div>
 							<div id="formpegawai" class="panel-collapse collapse">
 								<div class="panel-body">
@@ -58,6 +40,12 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label class="col-sm-3 control-label">Username</label>
+											<div class="col-sm-7">
+												<input type="text" name="username" class="form-control" maxlength="64">
+											</div>
+										</div>
+										<div class="form-group">
 											<label class="col-sm-3 control-label">Jenis Kelamin</label>
 											<div class="col-sm-7">
 												<select name="jk" class="form-control">
@@ -70,7 +58,16 @@
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Jabatan</label>
 											<div class="col-sm-7">
-												<input type="text" name="jabatan" class="form-control" maxlength="32">
+												<select name="jabatan" class="form-control">
+													<option value="">Pilih</option>
+													<?php
+													while ($row = mysqli_fetch_assoc($jabatan)) {
+													?>
+														<option value="<?php echo $row['nama'] ?>"><?php echo $row['nama'] ?></option>
+													<?php
+													}
+													?>
+												</select>
 											</div>
 										</div>
 										<div class="form-group">
@@ -125,7 +122,7 @@
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Email</label>
 											<div class="col-sm-7">
-												<input type="email" name="email" class="form-control" maxlength="13">
+												<input type="email" name="email" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">
@@ -134,9 +131,24 @@
 												<select name="departemen" class="form-control">
 													<option value="">Pilih</option>
 													<?php
-													while($row = mysqli_fetch_assoc($departemen)) {
+													while ($row = mysqli_fetch_assoc($departemen)) {
 													?>
-													<option value="<?php echo $row['nama']?>"><?php echo $row['nama']?></option>
+														<option value="<?php echo $row['nama'] ?>"><?php echo $row['nama'] ?></option>
+													<?php
+													}
+													?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Atasan</label>
+											<div class="col-sm-7">
+												<select name="id_atas" class="form-control">
+													<option value="">Pilih</option>
+													<?php
+													while ($row = mysqli_fetch_assoc($atasan)) {
+													?>
+														<option value="<?php echo $row['nik'] ?>"><?php echo $row['nama_peg'] ?></option>
 													<?php
 													}
 													?>
@@ -162,6 +174,14 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label class="col-sm-3 control-label">Tanggal Masuk</label>
+											<div class="col-sm-7">
+												<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+													<input type="text" name="tgl_masuk" class="form-control"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
 											<div class="col-sm-offset-3 col-sm-7">
 												<button type="submit" name="save" value="save" class="btn btn-danger">Save</button>
 											</div>
@@ -176,58 +196,68 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>NIP</th>
+								<th>NIK</th>
 								<th>Nama</th>
+								<th>Username</th>
 								<th>JK</th>
 								<th>Jabatan</th>
+								<th>Departemen</th>
 								<th>Status</th>
 								<th>No. Telp #</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>sas</td>
-								<td>sasa</td>
-								<td>sasa</td>
-								<td>sasa</td>
-								<td>sas</td>
-								<td>ass</td>
-								<td class="tools"><a href="" title="view"><i class="fa fa-folder-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="" title="edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="" title="delete"><i class="fa fa-trash-o"></i></a></td>
-							</tr>
+							<?php
+							while ($peg = mysqli_fetch_array($pegawai)) {
+							?>
+								<tr>
+									<td><?php echo $peg['nik']; ?></td>
+									<td><?php echo $peg['nama_peg']; ?></td>
+									<td><?php echo $peg['username']; ?></td>
+									<td><?php echo $peg['jk']; ?></td>
+									<td><?php echo $peg['jabatan']; ?></td>
+									<td><?php echo $peg['departemen']; ?></td>
+									<td><?php echo $peg['status']; ?></td>
+									<td><?php echo $peg['telp']; ?></td>
+									<td class="tools"><a href="home-admin.php?page=form-lihat-data-pegawai&nik=<?= $peg['nik']; ?>" title="view"><i class="fa fa-folder-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="home-admin.php?page=form-edit-data-pegawai&nik=<?= $peg['nik']; ?>" title="edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="home-admin.php?page=delete-data-pegawai&nik=<?php echo $peg['nik']; ?>" title="delete"><i class="fa fa-trash-o"></i></a></td>
+								</tr>
+							<?php
+							}
+							?>
 						</tbody>
 					</table>
 				</div>
 			</div>
-        </div>
+		</div>
 	</div>
 </section>
 <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
+	$(function() {
+		$("#example1").DataTable();
+		$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false
+		});
+	});
 </script>
 <!-- datepicker -->
 <script type="text/javascript" src="plugins/datepicker/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/locales/bootstrap-datetimepicker.id.js" charset="UTF-8"></script>
 <script type="text/javascript">
-	 $('.form_date').datetimepicker({
-			language:  'id',
-			weekStart: 1,
-			todayBtn:  1,
-	  autoclose: 1,
-	  todayHighlight: 1,
-	  startView: 2,
-	  minView: 2,
-	  forceParse: 0
-		});
+	$('.form_date').datetimepicker({
+		language: 'id',
+		weekStart: 1,
+		todayBtn: 1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+	});
 </script>

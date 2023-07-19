@@ -1,88 +1,126 @@
 <?php
-	if (isset($_GET['nip'])) {
-	$nip = $_GET['nip'];
-	}
-	else {
-		die ("Error. No Kode Selected! ");	
-	}
-	include "dist/koneksi.php";
-	$ambilData=mysqli_query($con,"SELECT * FROM tb_pegawai WHERE nip='$nip'");
-	$hasil=mysqli_fetch_array($ambilData);
-		$nip = $hasil['nip'];
+if (isset($_GET['nik'])) {
+	$nik = $_GET['nik'];
+} else {
+	die("Error. No Kode Selected! ");
+}
+include "dist/koneksi.php";
+$departemen = mysqli_query($con, 'SELECT * from tb_departemen');
+$jabatan = mysqli_query($con, 'SELECT * from tb_jabatan');
+$atasan = mysqli_query($con, 'SELECT * FROM tb_users WHERE tb_users.hak_akses = "pegawai"');
+$ambilData = mysqli_query($con, "SELECT * FROM tb_users WHERE nik='$nik'");
+$hasil = mysqli_fetch_array($ambilData);
+$nik = $hasil['nik'];
 ?>
 <section class="content-header">
-    <h1>Form<small>Lihat Data Pegawai <b>#<?=$nip?></b></small></h1>
-    <ol class="breadcrumb">
-        <li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Lihat Data Pegawai</li>
-    </ol>
+	<h1>Form<small>Lihat Data Pegawai <b>#<?= $nik ?></b></small></h1>
+	<ol class="breadcrumb">
+		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+		<li class="active">Lihat Data Pegawai</li>
+	</ol>
 </section>
 <section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<form class="form-horizontal">
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Nama</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['nama'];?>" disabled="disabled" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Jenis Kelamin</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['jk'];?>" disabled="disabled" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Jabatan</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['jab'];?>" disabled="disabled">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Tempat, Tanggal Lahir</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" value="<?=$hasil['tmp_lhr'];?>" disabled="disabled">
-							</div>
-							<div class="col-sm-3">
-								<input type="text" class="form-control" value="<?=$hasil['tgl_lhr'];?>" disabled="disabled">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Golongan Darah</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['gol_darah'];?>" disabled="disabled">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Agama</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['agama'];?>" disabled="disabled">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Status</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['status'];?>" disabled="disabled">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">No. Telp</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" value="<?=$hasil['telp'];?>" disabled="disabled">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Alamat</label>
-							<div class="col-sm-7">
-								<textarea type="text" class="form-control" disabled="disabled"><?=$hasil['alamat'];?></textarea>
-							</div>
-						</div>
-					</form>
+	<div class="panel panel-default" style="background-color: white;border-radius:10px">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="text-black">Nama</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['nama_peg']; ?></div>
 				</div>
 			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">username</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['username']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					Jenis kelamin </div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['jk']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">Alamat</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['alamat']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">No. TLpn</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['telp']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">Jabatan</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['jabatan']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">Departemen</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['departemen']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">Email</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['email']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">Tanggal Masuk</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['tgl_masuk']; ?></div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-xs-3">
+					<div class="text-black">Sisa Cuti Tahunan</a></div>
+				</div>
+				<div class="col-xs-">
+					<div class="text-black"><?= $hasil['hak_cuti_tahunan']; ?></div>
+				</div>
+			</div>
+			<?php
+			if ($hasil['jk'] == 'perempuan') {
+			?>
+				<div class="row" style="margin-top: 10px;">
+					<div class="col-xs-3">
+						<div class="text-black">Sisa Cuti Hamil</a></div>
+					</div>
+					<div class="col-xs-">
+						<div class="text-black"><?= $hasil['cuti_hamil']; ?></div>
+					</div>
+				</div>
+			<?php
+
+			} ?>
+
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	$('input').attr('disabled', true);
+	$('textarea').attr('disabled', true);
+	$('select').attr('disabled', true);
+</script>

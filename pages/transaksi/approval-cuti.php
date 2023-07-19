@@ -82,7 +82,6 @@
                       <input type="hidden" value="setujui" name="approval">
                       <button type="submit" name="save" value="save" <?php if ($dep !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-success" onclick="return confirm('Apakah anda yakin akan menyetujui permohan cuti <?= $data['nama_peg'] ?>?')">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-
                     </form>
                   </td>
                   <td>
