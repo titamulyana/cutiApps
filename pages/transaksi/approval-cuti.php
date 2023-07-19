@@ -40,49 +40,59 @@
                 <th>Dari Tanggal</th>
                 <th>Sampai Tanggal</th>
                 <th>Jenis Cuti</th>
-                <th colspan="2">Action</th>
-
+                <th>Status</th>
+                <th>Setujui</th>
+                <th>Tolak</th>
               </tr>
             </thead>
             <tbody>
               <?php
               include './dist/koneksi.php';
-              $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik='$_SESSION[nik]'");
+              $nikBawahan = mysqli_query($con, "SELECT nik from tb_users where id_atas='$_SESSION[nik]'");
+              $dataArray = array();
+              while ($row = mysqli_fetch_assoc($nikBawahan)) {
+                $dataArray[] = $row;
+              }
+              $nikList = "'" . implode("','", array_column($dataArray, 'nik')) . "'";
+
+
+              $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik in ($nikList)");
               while ($row = mysqli_fetch_assoc($dataCuti)) {
                 $timestamp = strtotime($row['created_at']);
                 $date = date("Y-m-d", $timestamp);
-
                 $dep = ($row['depApproval'] === '1') ? 'Disetujui' : (($row['depApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
-                $sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan')
-
+                $sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
+                $nikPemohon = $row['nik'];
+                $query = mysqli_query($con, "SELECT nama_peg from tb_users where nik='$nikPemohon'");
+                $data = mysqli_fetch_assoc($query)
               ?>
                 <tr>
-                  <td><?= $row['id'] ?></td>
+                  <td><?= $data['nama_peg'] ?></td>
                   <td><?= $date ?></td>
                   <td><?= $row['lama'] ?></td>
                   <td><?= $row['alasan'] ?></td>
                   <td><?= $row['mulai'] ?></td>
                   <td><?= $row['selesai'] ?></td>
                   <td><?= $row['jenis_cuti'] ?></td>
-                  <td style="display: flex;    justify-content: center;">
-                    <form action="home-pegawai.php?page=permohonan-cuti-tahunan" class="form-horizontal" method="POST" enctype="multipart/form-data">
-                      <div class="form-group">
-                        <button type="submit" name="save" value="save" class="btn btn-success">Setujui</button>
-                      </div>
+                  <td><?= $dep ?></td>
+                  <td>
+                    <form action="home-pegawai.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
+                      <input type="hidden" value="setujui" name="approval">
+                      <button type="submit" name="save" value="save" <?php if ($dep !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-success" onclick="return confirm('Apakah anda yakin akan menyetujui permohan cuti <?= $data['nama_peg'] ?>?')">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+
                     </form>
-
                   </td>
-                  <td style="display: flex;
-    justify-content: center;">
-
-                    <form action="home-pegawai.php?page=permohonan-cuti-tahunan" class="form-horizontal" method="POST" enctype="multipart/form-data">
-                      <div class="form-group">
-                        <button type="submit" name="save" value="save" class="btn btn-danger">Tolak</button>
-                      </div>
+                  <td>
+                    <form action="home-pegawai.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
+                      <input type="hidden" value="tolak" name="approval">
+                      <button name="save" value="save" type="submit" <?php if ($dep !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menolak permohan cuti <?= $data['nama_peg'] ?>')">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </button>
                     </form>
-
                   </td>
-
                 </tr>
               <?php
               } ?>
@@ -94,6 +104,14 @@
   </div>
 </section>
 <script>
+  function confirmSubmit() {
+    // Munculkan konfirmasi menggunakan fungsi confirm()
+    var result = confirm('Apakah Anda yakin ingin menyubmit form?');
+
+    // Jika pengguna mengklik "OK", return true agar form dikirimkan
+    // Jika pengguna mengklik "Cancel", return false agar form tidak dikirimkan
+    return result;
+  }
   $(function() {
     $("#example1").DataTable();
     $('#example2').DataTable({
