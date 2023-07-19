@@ -6,7 +6,7 @@
     </ol>
 </section>
 <div class="register-box">
-	<div class='register-logo'><b>Approved</b> Cuti!</div>	
+	<div class='register-logo'><b>Approved</b> Cuti!</div>
 	<div class='register-box-body'>
 		<p>MAAF, PROSES INI HANYA DAPAT BERJALAN DI APLIKASI VERSI PRO, SILAHKAN HUBUNGI ADMIN RajaPutraMedia.Com</p>
 		<div class='row'>

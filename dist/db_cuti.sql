@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 19, 2023 at 10:18 AM
+-- Host: localhost:3306
+-- Generation Time: Jul 19, 2023 at 01:28 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `tb_cuti` (
   `depApproval_at` timestamp NULL DEFAULT NULL,
   `sdmApproval` tinyint(1) DEFAULT 0,
   `sdmApproval_at` timestamp NULL DEFAULT NULL,
-  `soft_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `soft_delete` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -49,9 +49,10 @@ CREATE TABLE `tb_cuti` (
 --
 
 INSERT INTO `tb_cuti` (`id`, `nik`, `jenis_cuti`, `mulai`, `selesai`, `lama`, `alasan`, `depApproval`, `depApproval_at`, `sdmApproval`, `sdmApproval_at`, `soft_delete`, `created_at`, `updated_at`) VALUES
-(1, '72023001', 'tahunan', '2023-08-08', '2023-09-09', 1, 'alasan', 0, NULL, 0, NULL, 0, '2023-07-19 05:38:26', '2023-07-19 05:38:26'),
-(2, '82023001', 'tahunan', '2023-08-08', '2023-09-09', 1, 'alasan', 0, NULL, 0, NULL, 0, '2023-07-19 05:38:26', '2023-07-19 05:38:26'),
-(3, '62023001', 'tahunan', '2023-08-08', '2023-09-09', 1, 'alasa', 0, NULL, 0, NULL, 0, '2023-07-19 05:38:26', '2023-07-19 05:38:26');
+(1, '72023001', 'tahunan', '2023-08-08', '2023-09-09', 1, 'alasan', NULL, NULL, 0, NULL, 0, '2023-07-19 05:38:26', '2023-07-19 13:25:29'),
+(2, '82023001', 'tahunan', '2023-08-08', '2023-09-09', 1, 'alasan', NULL, NULL, 0, NULL, 0, '2023-07-19 05:38:26', '2023-07-19 13:25:32'),
+(3, '62023001', 'tahunan', '2023-08-08', '2023-09-09', 1, 'alasa', NULL, NULL, 0, NULL, 0, '2023-07-19 05:38:26', '2023-07-19 13:25:34'),
+(4, '62023001', 'hak_cuti_tahunan', '2023-07-20', '2023-07-20', 1, '321321', NULL, NULL, 0, NULL, 0, '2023-07-19 13:08:08', '2023-07-19 13:25:59');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`nik`, `username`, `password`, `nama_peg`, `jk`, `jabatan`, `hak_akses`, `tmpt_lahir`, `tgl_lahir`, `agama`, `status`, `telp`, `alamat`, `hak_cuti_tahunan`, `cuti_hamil`, `email`, `departemen`, `tgl_masuk`, `soft_delete`, `id_atas`, `approval`) VALUES
-('62023001', 'staf', '123', 'Budi Prasangka', 'laki-laki', 'staff', 'pegawai', 'kalimantan', '1997-01-01', 'islam', 'single', '08233456789', 'Jl. Kiri Kanan', 12, 0, 'staf@gmail.com', 'finance', '2022-01-01', 0, NULL, 0),
+('62023001', 'staf', '123', 'Budi Prasangka', 'laki-laki', 'staff', 'pegawai', 'kalimantan', '1997-01-01', 'islam', 'single', '08233456789', 'Jl. Kiri Kanan', 10, 0, 'staf@gmail.com', 'finance', '2022-01-01', 0, NULL, 0),
 ('72023001', 'hrd', '123', 'Adni Malarangeng', 'laki-laki', 'hrd', 'hrd', 'papua', '1995-01-01', 'islam', 'single', '08123456789', 'Jl. SImpang Siur', 12, 0, 'hrd@gmail.com', 'HRD', '2022-01-01', 0, NULL, 0),
 ('82023001', 'headfinance', '123', 'Jaka Buntung ', 'laki-laki', 'head', 'pegawai', 'papua', '1996-01-01', 'islam', 'single', '08223456789', 'Jl. Mundur Maju', 12, 0, 'headfinanance@gmail.com', 'finance', '2022-01-01', 0, NULL, 0);
 
@@ -200,7 +201,7 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT for table `tb_cuti`
 --
 ALTER TABLE `tb_cuti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_departemen`

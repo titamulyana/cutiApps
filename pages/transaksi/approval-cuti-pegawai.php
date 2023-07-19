@@ -1,40 +1,14 @@
 <section class="content-header">
-  <h1>Permohonan<small>Cuti</small></h1>
+  <h1>Approval<small>Cuti</small></h1>
   <ol class="breadcrumb">
     <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-    <li class="active">Permohonan Cuti</li>
+    <li class="active">Approval Cuti</li>
   </ol>
 </section>
 <div class="register-box">
   <?php
   include "dist/koneksi.php";
-  // function kdauto($tabel, $inisial){
-  // 	$struktur   = mysqli_query($con,"SELECT * FROM $tabel");
-  // 	$field      = mysql_field_name($struktur,0);
-  // 	$panjang    = mysql_field_len($struktur,0);
-  // 	$qry  = mysqli_query($con,"SELECT max(".$field.") FROM ".$tabel);
-  // 	$row  = mysqli_fetch_array($qry);
-  // 	if ($row[0]=="") {
-  // 	$angka=0;
-  // 	}
-  // 	else {
-  // 	$angka= substr($row[0], strlen($inisial));
-  // 	}
-  // 	$angka++;
-  // 	$angka      =strval($angka);
-  // 	$tmp  ="";
-  // 	for($i=1; $i<=($panjang-strlen($inisial)-strlen($angka)); $i++) {
-  // 	$tmp=$tmp."0";
-  // 	}
-  // 	return $inisial.$tmp.$angka;
-  // }
-
-
-
-
-
   $tgl    = date('H:m:s');
-
 
   if ($_POST['save'] == "save") {
 
@@ -129,7 +103,7 @@
       $queryCuti = "INSERT INTO tb_cuti (nik, jenis_cuti, mulai, selesai, lama, alasan)
       VALUES ('$nik', '$jenis', '$mulai', '$selesai', '$jml_hari', '$alasan')";
       $updateCuti = mysqli_query($con, $queryCuti);
-      if  (mysqli_affected_rows($con) > 0) {
+      if (mysqli_affected_rows($con) > 0) {
         echo "<div class='register-logo'><b>Permohon Cuti Berhasil Diajukan</div>
 			<div class='box box-primary'>
 				<div class='register-box-body'>
@@ -160,7 +134,7 @@
       echo "<div class='register-logo'><b>Terjadi Kesalahan , silahkan ajukan ulang!</div>
 			<div class='box box-primary'>
 				<div class='register-box-body'>
-					<p>Update failed:" . $e->getMessage(). "</p>
+					<p>Update failed:" . $e->getMessage() . "</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
@@ -170,9 +144,6 @@
 				</div>
 			</div>";
     }
-
-
-
   }
   ?>
 </div>

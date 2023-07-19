@@ -45,7 +45,7 @@ if($_SESSION['hak_akses']!="HRD"){
 	<!-- DataTables -->
 	<link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 	<script type="text/javascript" src="plugins/datatables/jquery.js"></script>
-			
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -123,7 +123,7 @@ if($_SESSION['hak_akses']!="HRD"){
 					case 'approved-cuti': include "pages/transaksi/approved-cuti.php"; break;
 					case 'not-approved-cuti': include "pages/transaksi/not-approved-cuti.php"; break;
 					case 'history-cuti-hrd': include "pages/view/history-cuti-hrd.php"; break;
-					default : include 'dashboard.php';	
+					default : include 'dashboard.php';
 				}
 			?>
 		</section>
