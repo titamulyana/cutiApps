@@ -10,6 +10,29 @@ if ($_SESSION['hak_akses'] != "pegawai") {
 		<p>Anda Bukan Pegawai.</p>
 		<button type='button' onclick=location.href='index.php'>Back</button>");
 }
+include './dist/koneksi2.php';
+if ($_POST['ganti'] == "ganti") {
+  if (empty($_POST['new-password']))
+   echo "<script>alert('data tidak sesuai');</script>";
+
+  try {
+    $newPassword = $_POST['new-password'];
+    $nikGanti = $_SESSION['nik'];
+
+    $query = mysqli_query($con, "UPDATE tb_users SET `password`='$newPassword' WHERE nik=$nikGanti");
+
+    // Mengeksekusi query ganti password
+    if ($query) {
+      echo "<script>alert('Password Berhasil diganti');</script>";
+    } else {
+      echo "<script>alert('Gagal ganti password');</script>";
+    }
+   } catch (Exception $e) {
+    echo "<script>alert('".$e."');</script>";
+   }
+
+
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,7 +78,7 @@ if ($_SESSION['hak_akses'] != "pegawai") {
 	<![endif]-->
 </head>
 <?php
-include './dist/koneksi2.php';
+
 $nik = $_SESSION['nik'];
 $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
 ?>
@@ -74,8 +97,8 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
           <form method="POST">
             <!-- Your form fields go here -->
             <div class="form-group">
-              <label for="new-password">New Password:</label>
-              <input type="password" class="form-control" id="new-password" placeholder="Enter new password">
+              <label for="new-password">Password Baru</label>
+              <input type="password" name= "new-password" class="form-control" id="new-password" placeholder="Enter new password" required>
             </div>
             <!-- Add other form fields as needed -->
             <div class="modal-footer">
@@ -185,10 +208,7 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
         ?>
       </section>
     </div>
-    <footer class="main-footer">
-      <!-- <div class="pull-right hidden-xs"><b>Version</b> 1.0</div> -->
-      Copyright &copy; 2023 <a href="#" target="_blank">cuti ONLINE</a>. All rights reserved
-    </footer>
+
   </div>
   <!-- ./wrapper -->
   <!-- jQuery 2.1.4 -->
