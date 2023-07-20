@@ -6,24 +6,6 @@
   </ol>
 </section>
 <section class="content">
-  <!-- <div class='register-logo'><b>Approval</b> Cuti!</div> -->
-  <!-- <div class='register-box-body'>
-    <p>Silahkan tentukan status persetujuan untuk permohonan cuti No. <b>$no_cuti</b></p>
-    <div class='row'>
-      <div class='col-xs-1'></div>
-      <div class='col-xs-5'>
-        <div class='box-body box-profile'>
-          <a class='btn btn-primary btn-block' href='home-hrd.php?page=approved-cuti'>Approved</a>
-        </div>
-      </div>
-      <div class='col-xs-5'>
-        <div class='box-body box-profile'>
-          <a class='btn btn-warning btn-block' href='home-hrd.php?page=not-approved-cuti'>Not Approved</a>
-        </div>
-      </div>
-      <div class='col-xs-1'></div>
-    </div>
-  </div> -->
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
@@ -31,7 +13,7 @@
           <div>
           </div>
           <button id="exportButton" class="btn btn-primary">Export to PDF</button>
-          <table id="example2" class="table table-bordered table-striped">
+          <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Nama Pegawai</th>
@@ -77,7 +59,7 @@
                   case ($row['sdmApproval'] === '0'):
                     $status = "HRD Tidak Menyetujui";
                     break;
-                  case ($row['depApproval'] === '0' ):
+                  case ($row['depApproval'] === '0'):
                     $status = "Atasan Tidak Menyetujui";
                     break;
                   default:
