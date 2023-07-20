@@ -50,8 +50,8 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 											<div class="col-sm-7">
 												<select name="jk" class="form-control">
 													<option value="">Pilih</option>
-													<option value="L">Laki-laki</option>
-													<option value="P">Perempuan</option>
+													<option value="laki-laki">Laki-laki</option>
+													<option value="perempuan">Perempuan</option>
 												</select>
 											</div>
 										</div>
