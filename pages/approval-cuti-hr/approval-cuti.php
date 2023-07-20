@@ -32,7 +32,7 @@
 							<?php
 							include './dist/koneksi.php';
 
-							$dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti");
+							$dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE soft_delete = 0 ORDER BY created_at DESC");
 							while ($row = mysqli_fetch_assoc($dataCuti)) {
 								$timestamp = strtotime($row['created_at']);
 								$date = date("Y-m-d", $timestamp);

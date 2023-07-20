@@ -54,8 +54,8 @@
 			</div>";
       exit();
     }
-    $nik = $_POST['nik'];
-    $mulai  = $_POST['mulai'];
+    $nik = htmlspecialchars($_POST['nik']);
+    $mulai  = htmlspecialchars($_POST['mulai']);
     $currentDate = strtotime(date('Y-m-d'));
     $mulaiTimestamp = strtotime($mulai);
 
