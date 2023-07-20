@@ -34,7 +34,7 @@
       // mencoba mengupdate tb_cuti
       $editApproval = mysqli_query($con, "UPDATE tb_cuti SET depApproval='$approval' WHERE id='$idcuti'");
       if ($editApproval && mysqli_affected_rows($con) > 0) {
-        echo "<div class='register-logo'><b>Cuti Disetujui</div>
+        echo "<div class='register-logo'><b>Cuti di ".$_POST['approval']."</div>
             <div class='box box-primary'>
               <div class='register-box-body'>
                 <div class='row'>

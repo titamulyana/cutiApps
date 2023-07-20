@@ -35,6 +35,7 @@
             <thead>
               <tr>
                 <th>Nama Pegawai</th>
+                <th>NIK </th>
                 <th>Tgl Pengajuan</th>
                 <th>Jumlah Hari</th>
                 <th>Keterangan Cuti</th>
@@ -62,6 +63,28 @@
                 $timestamp = strtotime($row['created_at']);
                 $date = date("Y-m-d", $timestamp);
                 $dep = ($row['depApproval'] === '1') ? 'Disetujui' : (($row['depApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
+
+                switch (true) {
+                  case ($row['depApproval'] === null):
+                    $status = "Menunggu approval atasan";
+                    break;
+                  case ($row['sdmApproval'] === null):
+                    $status = "Menunggu approval HRD";
+                    break;
+                  case ($row['sdmApproval'] === '1' && $row['depApproval'] === '1'):
+                    $status = "Cuti Disetujui";
+                    break;
+                  case ($row['sdmApproval'] === '0'):
+                    $status = "HRD Tidak Menyetujui";
+                    break;
+                  case ($row['depApproval'] === '0' ):
+                    $status = "Atasan Tidak Menyetujui";
+                    break;
+                  default:
+                    $status = "Status tidak diketahui";
+                    break;
+                }
+
                 $sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
                 $nikPemohon = $row['nik'];
                 $query = mysqli_query($con, "SELECT nama_peg from tb_users where nik='$nikPemohon'");
@@ -69,13 +92,14 @@
               ?>
                 <tr>
                   <td><?= $data['nama_peg'] ?></td>
+                  <td><?= $row['nik'] ?></td>
                   <td><?= $date ?></td>
                   <td><?= $row['lama'] ?></td>
                   <td><?= $row['alasan'] ?></td>
                   <td><?= $row['mulai'] ?></td>
                   <td><?= $row['selesai'] ?></td>
                   <td><?= $row['jenis_cuti'] ?></td>
-                  <td><?= $dep ?></td>
+                  <td><?= $status ?></td>
                   <td>
                     <form action="home-pegawai.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
                       <input type="hidden" value="<?= $row['id'] ?>" name="idcuti">

@@ -33,8 +33,7 @@
       $currentDate = strtotime(date('Y-m-d'));
       $mulaiTimestamp = strtotime($mulai);
 
-
-      $search = mysqli_query($con, "SELECT * from tb_cuti where depApproval IS NULL OR sdmApproval IS NULL");
+      $search = mysqli_query($con, "SELECT * from tb_cuti where nik='$nik' AND ( depApproval IS NULL OR sdmApproval IS NULL)");
       // check apakah sudah mengajukan cuti
       if (mysqli_num_rows($search) > 0) {
         echo "<div class='register-logo'>Pengajuan Ditolak.<b></div>

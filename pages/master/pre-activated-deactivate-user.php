@@ -12,9 +12,9 @@
 	$aktif 		= $_GET['aktif'];
 	}
 	else{
-		die ("Error. No ID Selected! ");	
+		die ("Error. No ID Selected! ");
 	}
-	echo "<div class='register-logo'><b>Activated or Deactivate</b> User!</div>	
+	echo "<div class='register-logo'><b>Activated or Deactivate</b> User!</div>
 		<div class='register-box-body'>
 			<p>Silahkan tentukan status untuk user <b>$id_user</b></p>
 			<p>Status sekarang aktif = <b>$aktif</b></p>
