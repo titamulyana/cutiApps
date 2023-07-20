@@ -101,8 +101,8 @@ if ($_SESSION['hak_akses'] != "hrd") {
 							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
 							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai</a></li>
 							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
-							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-briefcase"></i> Jabatan</a></li>
-							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-briefcase"></i> Jenis Cuti</a></li>
+							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-th-list"></i> Jabatan</a></li>
+							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li>
 						</ul>
 					</li>
 					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
