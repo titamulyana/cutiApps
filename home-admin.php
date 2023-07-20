@@ -107,8 +107,8 @@ if ($_SESSION['hak_akses'] != "hrd") {
 					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
 							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
-							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-check-square-o"></i> Approved</a></li>
-							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-minus-square-o"></i> All</a></li>
+							<li><a href="home-admin.php?page=report-approved-cuti"> <i class="fa fa-check-square-o"></i> Approved</a></li>
+							<li><a href="home-admin.php?page=report-all-cuti"> <i class="fa fa-minus-square-o"></i> All</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -169,6 +169,12 @@ if ($_SESSION['hak_akses'] != "hrd") {
 						break;
 					case 'approval-cuti':
 						include "pages/approval-cuti-hr/approval-cuti.php";
+						break;
+					case 'report-approved-cuti':
+						include "pages/report/approved.php";
+						break;
+					case 'report-all-cuti':
+						include "pages/report/all-cuti.php";
 						break;
 					default:
 						include 'dashboard.php';
