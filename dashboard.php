@@ -6,24 +6,25 @@
 </section>
 <?php
 	include "dist/koneksi.php";
-	// $cuti=mysqli_query($con,"SELECT * FROM tb_mohoncuti");
-	// $jmlcuti = mysqli_num_rows($cuti);
+	$cuti=mysqli_query($con,"SELECT * FROM tb_cuti");
+	$jmlcuti = mysqli_num_rows($cuti);
 	
-	// $approve=mysqli_query($con,"SELECT * FROM tb_mohoncuti WHERE persetujuan='DISETUJUI' OR persetujuan='TIDAK DISETUJUI'");
-	// $jmlapprove = mysqli_num_rows($approve);
+	$approve=mysqli_query($con,"SELECT * FROM tb_cuti WHERE sdmApproval='1' AND depApproval='1'");
+	$jmlapprove = mysqli_num_rows($approve);
 	
-	// $wait=mysqli_query($con,"SELECT * FROM tb_mohoncuti WHERE persetujuan=''");
-	// $jmlwait = mysqli_num_rows($wait);
+	$wait=mysqli_query($con,"SELECT * FROM tb_cuti WHERE sdmApproval IS NULL OR depApproval IS NULL;
+	");
+	$jmlwait = mysqli_num_rows($wait);
 	
-	// $pegawai=mysqli_query($con,"SELECT * FROM tb_pegawai");
-	// $jmlpegawai = mysqli_num_rows($pegawai);
+	$pegawai=mysqli_query($con,"SELECT * FROM tb_users");
+	$jmlpegawai = mysqli_num_rows($pegawai);
 ?>
 <section class="content">
     <div class="row">
 		<div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-aqua">
 				<div class="inner">
-					<h3>3</h3>
+					<h3><?php echo $jmlcuti;?></h3>
 					<p>Total Cuti</p>
 				</div>
 				<div class="icon">
@@ -35,7 +36,7 @@
         <div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-green">
 				<div class="inner">
-					<h3>3</h3>
+					<h3><?php echo $jmlapprove;?></h3>
 					<p>Total Approve</p>
 				</div>
 				<div class="icon">
@@ -47,7 +48,7 @@
         <div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-yellow">
 				<div class="inner">
-					<h3>2</h3>
+					<h3><?php echo $jmlwait;?></h3>
 					<p>Total Waiting</p>
 				</div>
 				<div class="icon">
@@ -59,7 +60,7 @@
         <div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-red">
 				<div class="inner">
-					<h3>2</h3>
+					<h3><?php $jmlpegawai;?></h3>
 					<p>Total Pegawai</p>
 				</div>
 				<div class="icon">
