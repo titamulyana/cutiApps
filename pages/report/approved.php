@@ -2,7 +2,7 @@
 	<h1>Approval<small>Cuti</small></h1>
 	<ol class="breadcrumb">
 		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-		<li class="active">History Cuti</li>
+		<li class="active">Report Cuti</li>
 	</ol>
 </section>
 <section class="content">
@@ -104,7 +104,7 @@
 		$('#example2').DataTable({
 			"paging": true,
 			"lengthChange": false,
-			"searching": false,
+			"searching": true,
 			"ordering": true,
 			"info": true,
 			"autoWidth": false

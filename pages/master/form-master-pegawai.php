@@ -145,7 +145,7 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Atasan</label>
 											<div class="col-sm-7">
-												<select name="id_atas" class="form-control">
+												<select name="id_atas" class="form-control selectpicker" data-live-search="true">
 													<option value="">Pilih</option>
 													<?php
 													while ($row = mysqli_fetch_assoc($atasan)) {
@@ -252,49 +252,11 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 <script type="text/javascript" src="plugins/datepicker/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/locales/bootstrap-datetimepicker.id.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../../dist/js/pages/form-pegawai.js"></script>
 <script type="text/javascript">
-	function limitInputValue(inputElement, maxAllowedValue) {
-		inputElement.on('input', function() {
-			var inputValue = parseFloat(inputElement.val());
-
-			if (inputValue > maxAllowedValue) {
-				inputElement.val(maxAllowedValue);
-			}
-		});
-	}
-	$(document).ready(function() {
-		limitInputValue($('.validation-cuti-tahunan'), 12);
-		limitInputValue($('.validation-cuti-hamil'), 90);
-	});
-
-	//hide cuti hamil
-	$(document).ready(function() {
-		function disabledCutiHamil() {
-			$('.cuti-hamil').attr('disabled', true);
-			$('.cuti-hamil').val(0);
-		}
-		
-		function enableCutiHamil() {
-			$('.cuti-hamil').val('');
-			$('.cuti-hamil').attr('disabled', false);
-		}
-
-		var genderSelect = $('.jenis-kelamin');
-
-		genderSelect.on('change', function() {
-			var selectedValue = genderSelect.val();
-
-			if (selectedValue === 'laki-laki') {
-				disabledCutiHamil();
-			} else {
-				enableCutiHamil();
-			}
-		});
-
-		if (genderSelect.val() === 'laki-laki') {
-			disabledCutiHamil();
-		}
-	});
+	// $(document).ready(function() {
+	// 	$('.selectpicker').select2();
+	// })
 
 	$('.form_date').datetimepicker({
 		language: 'id',

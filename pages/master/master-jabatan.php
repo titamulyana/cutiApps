@@ -1,8 +1,8 @@
 <section class="content-header">
-    <h1>Input<small>Data Departemen</small></h1>
+    <h1>Input<small>Data Jabatan</small></h1>
     <ol class="breadcrumb">
         <li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Input Data Departemen</li>
+        <li class="active">Input Data Jabatan</li>
     </ol>
 </section>
 <div class="register-box">
@@ -22,24 +22,24 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-admin.php?page=form-master-departemen' class='btn btn-block btn-warning'>Back</button>
+							<button type='button' onclick=location.href='home-admin.php?page=form-master-jabatan' class='btn btn-block btn-warning'>Back</button>
 						</div>
 					</div>
 				</div>
 			</div>";
         } else {
             // echo $tgl_lahir; die();
-            $insert = "INSERT INTO tb_departemen (nama)
+            $insert = "INSERT INTO tb_jabatan (nama)
             VALUES ('$nama')";
             $query = mysqli_query($con, $insert);   
             if ($query) {
                 echo "<div class='register-logo'><b>Input Data</b> Successful!</div>	
 				<div class='register-box-body'>
-					<p>Input Data Departemen Berhasil</p>
+					<p>Input Data Jabatan Berhasil</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-admin.php?page=form-master-departemen' class='btn btn-danger btn-block btn-flat'>Next >></button>
+							<button type='button' onclick=location.href='home-admin.php?page=form-master-jabatan' class='btn btn-danger btn-block btn-flat'>Next >></button>
 						</div>
 					</div>
 				</div>";

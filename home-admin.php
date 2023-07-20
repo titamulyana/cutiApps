@@ -101,6 +101,8 @@ if ($_SESSION['hak_akses'] != "hrd") {
 							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
 							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai</a></li>
 							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
+							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-briefcase"></i> Jabatan</a></li>
+							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-briefcase"></i> Jenis Cuti</a></li>
 						</ul>
 					</li>
 					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
@@ -178,6 +180,36 @@ if ($_SESSION['hak_akses'] != "hrd") {
 						break;
 					case 'report-all-cuti':
 						include "pages/report/all-cuti.php";
+						break;
+					case 'form-master-jabatan':
+						include "pages/master/form-master-data-jabatan.php";
+						break;
+					case 'master-jabatan':
+						include "pages/master/master-jabatan.php";
+						break;
+					case 'form-edit-data-jabatan':
+						include "pages/master/form-edit-data-jabatan.php";
+						break;
+					case 'edit-data-jabatan':
+						include "pages/master/edit-data-jabatan.php";
+						break;
+					case 'delete-data-jabatan':
+						include "pages/master/delete-data-jabatan.php";
+						break;
+					case 'form-master-jenis-cuti':
+						include "pages/master/form-master-data-jenis-cuti.php";
+						break;
+					case 'master-jenis-cuti':
+						include "pages/master/master-jenis-cuti.php";
+						break;
+					case 'form-edit-data-jenis-cuti':
+						include "pages/master/form-edit-data-jenis-cuti.php";
+						break;
+					case 'edit-data-jenis-cuti':
+						include "pages/master/edit-data-jenis-cuti.php";
+						break;
+					case 'delete-data-jenis-cuti':
+						include "pages/master/delete-data-jenis-cuti.php";
 						break;
 					default:
 						include 'dashboard.php';
