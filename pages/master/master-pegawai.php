@@ -7,25 +7,25 @@
 </section>
 <div class="register-box">
 	<?php
-	if ($_POST['save'] == "save") {
-		$nik		= $_POST['nik'];
-		$nama_peg	= $_POST['nama_peg'];
-		$jk			= $_POST['jk'];
-		$jabatan	= $_POST['jabatan'];
-		$hak_akses	= $_POST['hak_akses'];
-		$tmpt_lahir	= $_POST['tmpt_lahir'];
-		$tgl_lahir	= $_POST['tgl_lahir'];
-		$agama		= $_POST['agama'];
-		$status		= $_POST['status'];
-		$telp		= $_POST['telp'];
-		$email		= $_POST['email'];
-		$departemen	= $_POST['departemen'];
-		$id_atas	= $_POST['id_atas'];
-		$alamat		= $_POST['alamat'];
-		$hak_cuti_tahunan	= $_POST['hak_cuti_tahunan'];
-		$cuti_hamil		= $_POST['cuti_hamil'];
-		$user_name		= $_POST['username'];
-		$tgl_masuk = $_POST['tgl_masuk'];
+	if (@$_POST['save'] == "save") {
+		$nik		= htmlspecialchars($_POST['nik']);
+		$nama_peg	= htmlspecialchars($_POST['nama_peg']);
+		$jk			= htmlspecialchars($_POST['jk']);
+		$jabatan	= htmlspecialchars($_POST['jabatan']);
+		$hak_akses	= htmlspecialchars($_POST['hak_akses']);
+		$tmpt_lahir	= htmlspecialchars($_POST['tmpt_lahir']);
+		$tgl_lahir	= htmlspecialchars($_POST['tgl_lahir']);
+		$agama		= htmlspecialchars($_POST['agama']);
+		$status		= htmlspecialchars($_POST['status']);
+		$telp		= htmlspecialchars($_POST['telp']);
+		$email		= htmlspecialchars($_POST['email']);
+		$departemen	= htmlspecialchars($_POST['departemen']);
+		$id_atas	= htmlspecialchars($_POST['id_atas']);
+		$alamat		= htmlspecialchars($_POST['alamat']);
+		$hak_cuti_tahunan	= htmlspecialchars($_POST['hak_cuti_tahunan']);
+		$cuti_hamil = isset($_POST['cuti_hamil']) && $_POST['cuti_hamil'] !== '' ? htmlspecialchars($_POST['cuti_hamil']) : 'null';
+		$user_name		= htmlspecialchars($_POST['username']);
+		$tgl_masuk = htmlspecialchars($_POST['tgl_masuk']);
 
 		include "dist/koneksi.php";
 
@@ -35,6 +35,27 @@
 			empty($_POST['status']) || empty($_POST['telp']) || empty($_POST['email']) || empty($_POST['departemen']) ||
 			empty($_POST['id_atas']) || empty($_POST['alamat']) || empty($_POST['hak_cuti_tahunan']) || empty($_POST['cuti_hamil'])
 		) {
+			$_SESSION['form_input_pegawai'] = [
+				'nik' => $nik,
+				'nama_peg' => $nama_peg,
+				'jk' => $jk,
+				'jabatan' => $jabatan,
+				'hak_akses' => $hak_akses,
+				'tmpt_lahir' => $tmpt_lahir,
+				'tgl_lahir' => $tgl_lahir,
+				'agama' => $agama,
+				'status' => $status,
+				'telp' => $telp,
+				'email' => $email,
+				'departemen' => $departemen,
+				'id_atas' => $id_atas,
+				'alamat' => $alamat,
+				'hak_cuti_tahunan' => $hak_cuti_tahunan,
+				'cuti_hamil' => $cuti_hamil,
+				'username' => $user_name,
+				'tgl_masuk' => $tgl_masuk
+			];
+
 			echo "<div class='register-logo'><b>Oops!</b> Data Tidak Lengkap.</div>
 			<div class='box box-primary'>
 				<div class='register-box-body'>
@@ -52,6 +73,7 @@
 			$insert = "INSERT INTO tb_users (nik, username, password, nama_peg, jk, jabatan, hak_akses, tmpt_lahir, tgl_lahir, agama, status, telp, alamat, hak_cuti_tahunan, cuti_hamil, email, departemen, tgl_masuk, soft_delete, id_atas, approval) VALUES 
 			('$nik', '$user_name', '123', '$nama_peg', '$jk', '$jabatan', '$hak_akses', '$tmpt_lahir', '$tgl_lahir', '$agama', '$status', '$telp', '$alamat', '$hak_cuti_tahunan', '$cuti_hamil', '$email', '$departemen', '$tgl_masuk', 0, '$id_atas', 0)";
 			$query = mysqli_query($con, $insert);
+			unset($_SESSION['form_input_pegawai']);
 			if ($query) {
 				echo "<div class='register-logo'><b>Input Data</b> Successful!</div>	
 				<div class='register-box-body'>

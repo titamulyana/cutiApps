@@ -29,45 +29,46 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 										<div class="form-group">
 											<label class="col-sm-3 control-label">NIK</label>
 											<div class="col-sm-7">
-												<input type="text" name="nik" id="nik" class="form-control" value="" />
+												<input type="text" name="nik" id="nik" class="form-control" value="<?= @$_SESSION['form_input_pegawai']['nik'] ?>" />
 												<!-- <input type="hidden" name="nip" id="nip" value="" /> -->
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Nama Pegawai</label>
 											<div class="col-sm-7">
-												<input type="text" name="nama_peg" class="form-control" maxlength="64">
+												<input type="text" name="nama_peg" class="form-control" maxlength="64" value="<?= @$_SESSION['form_input_pegawai']['nama_peg'] ?>">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Username</label>
 											<div class="col-sm-7">
-												<input type="text" name="username" class="form-control" maxlength="64">
+												<input type="text" name="username" class="form-control" maxlength="64" value="<?= @$_SESSION['form_input_pegawai']['username'] ?>">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Jenis Kelamin</label>
 											<div class="col-sm-7">
-												<select name="jk" class="form-control jenis-kelamin">
-													<option value="">Pilih</option>
-													<option value="laki-laki">Laki-laki</option>
-													<option value="perempuan">Perempuan</option>
-												</select>
+											<select name="jk" class="form-control jenis-kelamin">
+												<option value="">Pilih</option>
+												<option value="laki-laki" <?= (@$_SESSION['form_input_pegawai']['jk'] == 'laki-laki') ? 'selected' : ''; ?>>Laki-laki</option>
+												<option value="perempuan" <?= (@$_SESSION['form_input_pegawai']['jk'] == 'perempuan') ? 'selected' : ''; ?>>Perempuan</option>
+											</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Jabatan</label>
 											<div class="col-sm-7">
-												<select name="jabatan" class="form-control">
-													<option value="">Pilih</option>
-													<?php
-													while ($row = mysqli_fetch_assoc($jabatan)) {
+											<select name="jabatan" class="form-control">
+												<option value="">Pilih</option>
+												<?php
+												while ($row = mysqli_fetch_assoc($jabatan)) {
+													$selected = ($_SESSION['form_input_pegawai']['jabatan'] == $row['nama']) ? 'selected' : '';
 													?>
-														<option value="<?php echo $row['nama'] ?>"><?php echo $row['nama'] ?></option>
-													<?php
-													}
-													?>
-												</select>
+													<option value="<?php echo $row['nama'] ?>" <?php echo $selected ?>><?php echo $row['nama'] ?></option>
+												<?php
+												}
+												?>
+											</select>
 											</div>
 										</div>
 										<div class="form-group">
@@ -75,18 +76,18 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 											<div class="col-sm-7">
 												<select name="hak_akses" class="form-control">
 													<option value="">Pilih</option>
-													<option value="hrd">HRD</option>
-													<option value="pegawai">Pegawai</option>
+													<option value="hrd" <?= (@$_SESSION['form_input_pegawai']['hak_akses'] == 'hrd') ? 'selected' : ''; ?>>HRD</option>
+													<option value="pegawai" <?= (@$_SESSION['form_input_pegawai']['hak_akses'] == 'pegawai') ? 'selected' : ''; ?>>Pegawai</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Tempat, Tanggal Lahir</label>
 											<div class="col-sm-3">
-												<input type="text" name="tmpt_lahir" class="form-control" maxlength="32">
+												<input type="text" name="tmpt_lahir" class="form-control" maxlength="32" value="<?= @$_SESSION['form_input_pegawai']['tmpt_lahir'] ?>">
 											</div>
 											<div class="input-group date form_date col-sm-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-												<input type="text" name="tgl_lahir" class="form-control"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+												<input type="text" name="tgl_lahir" class="form-control" value="<?= @$_SESSION['form_input_pegawai']['tgl_lahir'] ?>"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 											</div>
 										</div>
 										<div class="form-group">
@@ -94,12 +95,12 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 											<div class="col-sm-7">
 												<select name="agama" class="form-control">
 													<option value="">Pilih</option>
-													<option value="Islam">Islam</option>
-													<option value="Protestan">Protestan</option>
-													<option value="Katolik">Katolik</option>
-													<option value="Hindu">Hindu</option>
-													<option value="Budha">Budha</option>
-													<option value="Kepercayaan">Kepercayaan</option>
+													<option value="Islam" <?= (@$_SESSION['form_input_pegawai']['agama'] == 'Islam') ? 'selected' : ''; ?>>Islam</option>
+													<option value="Protestan" <?= (@$_SESSION['form_input_pegawai']['agama'] == 'Protestan') ? 'selected' : ''; ?>>Protestan</option>
+													<option value="Katolik" <?= (@$_SESSION['form_input_pegawai']['agama'] == 'Katolik') ? 'selected' : ''; ?>>Katolik</option>
+													<option value="Hindu" <?= (@$_SESSION['form_input_pegawai']['agama'] == 'Hindu') ? 'selected' : ''; ?>>Hindu</option>
+													<option value="Budha" <?= (@$_SESSION['form_input_pegawai']['agama'] == 'Budha') ? 'selected' : ''; ?>>Budha</option>
+													<option value="Kepercayaan" <?= (@$_SESSION['form_input_pegawai']['agama'] == 'Kepercayaan') ? 'selected' : ''; ?>>Kepercayaan</option>
 												</select>
 											</div>
 										</div>
@@ -108,21 +109,21 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 											<div class="col-sm-7">
 												<select name="status" class="form-control">
 													<option value="">Pilih</option>
-													<option value="single">Single</option>
-													<option value="married">Married</option>
+													<option value="single" value="Kepercayaan" <?= (@$_SESSION['form_input_pegawai']['status'] == 'single') ? 'selected' : ''; ?>>Single</option>
+													<option value="married" value="Kepercayaan" <?= (@$_SESSION['form_input_pegawai']['status'] == 'married') ? 'selected' : ''; ?>>Married</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">No. Telp</label>
 											<div class="col-sm-7">
-												<input type="text" name="telp" class="form-control" maxlength="13">
+												<input type="text" name="telp" class="form-control" maxlength="13" value="<?= @$_SESSION['form_input_pegawai']['telp'] ?>">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Email</label>
 											<div class="col-sm-7">
-												<input type="email" name="email" class="form-control">
+												<input type="email" name="email" class="form-control" value="<?= @$_SESSION['form_input_pegawai']['email'] ?>">
 											</div>
 										</div>
 										<div class="form-group">
@@ -132,8 +133,9 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 													<option value="">Pilih</option>
 													<?php
 													while ($row = mysqli_fetch_assoc($departemen)) {
+													$selectedDep = ($_SESSION['form_input_pegawai']['departemen'] == $row['nama']) ? 'selected' : '';
 													?>
-														<option value="<?php echo $row['nama'] ?>"><?php echo $row['nama'] ?></option>
+														<option value="<?php echo $row['nama'] ?>" <?= $selectedDep ?>><?php echo $row['nama'] ?></option>
 													<?php
 													}
 													?>
@@ -147,8 +149,9 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 													<option value="">Pilih</option>
 													<?php
 													while ($row = mysqli_fetch_assoc($atasan)) {
+													$selectedAtasan = ($_SESSION['form_input_pegawai']['id_atas'] == $row['nik']) ? 'selected' : '';
 													?>
-														<option value="<?php echo $row['nik'] ?>"><?php echo $row['nama_peg'] ?></option>
+														<option value="<?php echo $row['nik'] ?>" <?= $selectedAtasan ?>><?php echo $row['nama_peg'] ?></option>
 													<?php
 													}
 													?>
@@ -158,26 +161,26 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Alamat</label>
 											<div class="col-sm-7">
-												<textarea type="text" name="alamat" class="form-control" maxlength="512"></textarea>
+												<textarea type="text" name="alamat" class="form-control" maxlength="512"><?= @$_SESSION['form_input_pegawai']['alamat'] ?></textarea>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Hak Cuti Tahunan</label>
 											<div class="col-sm-7">
-												<input type="number" name="hak_cuti_tahunan" class="form-control validation-cuti-tahunan">
+												<input type="number" name="hak_cuti_tahunan" class="form-control validation-cuti-tahunan" value="<?= @$_SESSION['form_input_pegawai']['hak_cuti_tahunan'] ?>">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Cuti Hamil</label>
 											<div class="col-sm-7">
-												<input type="number" name="cuti_hamil" class="form-control cuti-hamil validation-cuti-hamil">
+												<input type="number" name="cuti_hamil" class="form-control cuti-hamil validation-cuti-hamil" value="<?= isset($_SESSION['form_input_pegawai']['cuti_hamil']) ? $_SESSION['form_input_pegawai']['cuti_hamil'] : '' ?>">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Tanggal Masuk</label>
 											<div class="col-sm-7">
 												<div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-													<input type="text" name="tgl_masuk" class="form-control"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+													<input type="text" name="tgl_masuk" class="form-control" value="<?= @$_SESSION['form_input_pegawai']['tgl_masuk'] ?>"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 												</div>
 											</div>
 										</div>
