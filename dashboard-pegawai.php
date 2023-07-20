@@ -10,18 +10,9 @@
 </section>
 <?php
 include './dist/koneksi.php';
+// mengambil data pegawai dari table tb_users berdasarkan session nik
 $ambilData = mysqli_query($con, "SELECT * FROM tb_users WHERE nik='$_SESSION[nik]'");
 $hasil = mysqli_fetch_array($ambilData);
-// $jmlcut = mysqli_num_rows($tampilCuti);
-
-// $approve=mysqli_query($con,"SELECT * FROM tb_mohoncuti WHERE persetujuan='DISETUJUI' OR persetujuan='TIDAK DISETUJUI'");
-// $jmlapprove = mysqli_num_rows($approve);
-
-// $wait=mysqli_query($con,"SELECT * FROM tb_mohoncuti WHERE persetujuan=''");
-// $jmlwait = mysqli_num_rows($wait);
-
-// $pegawai=mysqli_query($con,"SELECT * FROM tb_pegawai");
-// $jmlpegawai = mysqli_num_rows($pegawai);
 ?>
 <section class="content">
   <div class="panel panel-default" style="background-color: white;border-radius:10px">
@@ -109,67 +100,7 @@ $hasil = mysqli_fetch_array($ambilData);
           </div>
         </div>
       <?php
-
       } ?>
-
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col-md-12">
-      <div class="box box-primary">
-        <div class="box-body">
-          <div class="form-horizontal">
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Nama</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Jenis Kelamin</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['jk']; ?></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Jabatan</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['jabatan']; ?></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Tempat, Tanggal Lahir</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['tmpt_lahir']; ?></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Agama</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['agama']; ?></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Status</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['status']; ?></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">No. Telp</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['telp']; ?></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Alamat</label>
-              <div class="col-sm-7">
-                <div class="form-control-static"><?= $hasil['alamat']; ?></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </section>

@@ -171,12 +171,6 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
           case 'approval-cuti-pegawai':
             include "pages/transaksi/approval-cuti-pegawai.php";
             break;
-          case 'form-permohonan-cuti-umum':
-            include "pages/transaksi/form-permohonan-cuti-umum.php";
-            break;
-          case 'permohonan-cuti-umum':
-            include "pages/transaksi/permohonan-cuti-umum.php";
-            break;
           case 'history-cuti-pegawai':
             include "pages/view/history-cuti-pegawai.php";
             break;
@@ -222,4 +216,5 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
   <script src="plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 </body>
+
 </html>

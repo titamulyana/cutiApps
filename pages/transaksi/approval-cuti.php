@@ -2,7 +2,7 @@
   <h1>Approval<small>Cuti</small></h1>
   <ol class="breadcrumb">
     <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-    <li class="active">History Cuti</li>
+    <li class="active">Approval Cuti</li>
   </ol>
 </section>
 <section class="content">
@@ -13,6 +13,8 @@
           <div>
           </div>
           <button id="exportButton" class="btn btn-primary">Export to PDF</button>
+          <br>
+          <br>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>

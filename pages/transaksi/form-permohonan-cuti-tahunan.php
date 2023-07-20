@@ -1,5 +1,5 @@
 <section class="content-header">
-  <h1>Form Cuti</h1>
+  <h1>Form<small>Cuti</small></h1>
   <ol class="breadcrumb">
     <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
     <li class="active">Form Pengajuan Cuti</li>
