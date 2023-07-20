@@ -170,6 +170,9 @@ if ($_SESSION['hak_akses'] != "hrd") {
 					case 'approval-cuti':
 						include "pages/approval-cuti-hr/approval-cuti.php";
 						break;
+					case 'approval-cuti-pegawai':
+						include "pages/approval-cuti-hr/approval-cuti-pegawai.php";
+						break;
 					case 'report-approved-cuti':
 						include "pages/report/approved.php";
 						break;
