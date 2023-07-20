@@ -49,7 +49,7 @@
             <div class="form-group has-feedback">
               <label class="col-sm-3 control-label">Alasan </label>
               <div class="col-sm-4">
-                <textarea required id="alasan" name="alasan" rows="4" cols="50"></textarea>
+                <textarea required id="alasan" name="alasan" rows="4" style="width: 100%;"></textarea>
               </div>
             </div>
             <br /><br /><br />
