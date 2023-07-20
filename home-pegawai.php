@@ -61,47 +61,56 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
 ?>
 
 <body class="hold-transition skin-red fixed sidebar-mini">
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ganti Password</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            <!-- Your form fields go here -->
+            <div class="form-group">
+              <label for="new-password">New Password:</label>
+              <input type="password" class="form-control" id="new-password" placeholder="Enter new password">
+            </div>
+            <!-- Add other form fields as needed -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">BATAL</button>
+              <button name="ganti" value="ganti" type="submit" class="btn btn-primary">SIMPAN</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class="wrapper">
     <header class="main-header">
-      <a href="home-pegawai.php" class="logo"><span class="logo-mini">CUTI</span><span class="logo-lg"><b>Cuti</b> ONLINE</span></a>
-      <nav class="navbar navbar-static-top" role="navigation">
+      <a href="home-pegawai.php" class="logo">
+        <img src=" ./dist/img/log.png" alt="Logo" style="width: 100%;  height: 100%;  object-fit: contain;">
+      </a>
+      <nav class=" navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-inbox"></i><span class="label label-warning"></span></a>
-              <ul class="dropdown-menu">
-                <li class="header"></li>
-              </ul>
-            </li>
+
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
-                <span class="hidden-xs">Aplikasi Pengajuan Cuti Online</span> &nbsp;<i class="fa fa-angle-down"></i>
+                <span class="hidden-xs"><?php echo $_SESSION['nama_peg'] ?></span> &nbsp;<i class="fa fa-angle-down"></i>
               </a>
               <ul class="dropdown-menu">
-                <li class="user-header">
-                  <img src='dist/img/profile/no-image.jpg' class='img-circle' alt='User Image'>
-                  <p>Welcome - <?php echo $_SESSION['nama_peg'] ?><small><?php echo $_SESSION['hak_akses'] ?></small></p>
-                </li>
-                <li class="user-body">
-                  <div class="row">
-                  </div>
+                <li class="user-footer">
+                  <center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Ganti Password</button></center>
                 </li>
                 <li class="user-footer">
-                  <div class="pull-left">
-                    <?php
-                    setlocale(LC_TIME, 'id_ID');
-                    // Get the current date
-                    $currentDate = new DateTime();
-                    // Format the date in Bahasa Indonesia
-                    $formattedDate = $currentDate->format("l, d F Y");
-                    echo $formattedDate;
-                    ?>
-                  </div>
-                  <div class="pull-right">
-                    <a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
-                  </div>
+                  <a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
+
                 </li>
               </ul>
             </li>
@@ -112,7 +121,7 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
     <aside class="main-sidebar">
       <section class="sidebar">
         <ul class="sidebar-menu">
-          <li class="header">MAIN NAVIGATION</li>
+
           <li class="treeview"><a href="home-pegawai.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
           <li class="treeview"><a href="home-pegawai.php?page=form-permohonan-cuti-tahunan"><i class="fa fa-book"></i> <span>Permohonan Cuti</span></i></a>
           <li class="treeview"><a href="home-pegawai.php?page=history-cuti-pegawai"><i class="fa fa-exchange"></i> <span>History</span></a></li>
@@ -139,7 +148,6 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
             } else {
               echo "<li class='treeview'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i> <span>Approval Cuti</span></i></a>";
             }
-
           }
           ?>
         </ul>
