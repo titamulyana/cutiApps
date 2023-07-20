@@ -31,6 +31,7 @@
               <?php
               include './dist/koneksi.php';
               $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik='$_SESSION[nik]'");
+              $no = 1;
               while ($row = mysqli_fetch_assoc($dataCuti)) {
                 $timestamp = strtotime($row['created_at']);
                 $date = date("Y-m-d", $timestamp);
@@ -40,7 +41,7 @@
 
               ?>
                 <tr>
-                  <td><?= $row['id'] ?></td>
+                  <td><?= $no++ ?></td>
                   <td><?= $date ?></td>
                   <td><?= $row['lama'] ?></td>
                   <td><?= $row['alasan'] ?></td>

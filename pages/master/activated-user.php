@@ -16,7 +16,7 @@
 	
 	include "dist/koneksi.php";
 	$activated = "UPDATE tb_users SET aktif='Y' WHERE id_user='$id_user'";
-	$query = mysqli_query ($activated);		
+	$query = mysqli_query($activated);		
 		if($query){
 		echo "<div class='register-logo'><b>Activated</b> User!</div>	
 			<div class='register-box-body'>

@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
-        <form action="home-pegawai.php?page=permohonan-cuti-tahunan" class="form-horizontal" method="POST" enctype="multipart/form-data">
+        <form action="home-pegawai.php?page=permohonan-cuti-tahunan" class="form-horizontal" method="POST">
           <div class="box-body">
             <input type="hidden" value="<?= $_SESSION['nik'] ?>" name="nik">
             <div class="form-group">
@@ -49,13 +49,12 @@
             <div class="form-group has-feedback">
               <label class="col-sm-3 control-label">Alasan </label>
               <div class="col-sm-4">
-                <textarea required id="alasan" name="alasan" rows="4" style="width: 100%;"></textarea>
+                <textarea required id="alasan" name="alasan" rows="4" class="form-control w-100"></textarea>
               </div>
             </div>
-            <br /><br /><br />
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-7">
-                <button type="submit" name="save" value="save" class="btn btn-danger">Kirim</button>
+                <button type="submit" name="save" value="save" class="btn btn-primary">Kirim</button>
               </div>
             </div>
           </div>

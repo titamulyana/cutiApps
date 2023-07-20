@@ -8,8 +8,8 @@
 <div class="register-box">
 <?php	
 	if ($_POST['save'] == "save") {
-	$nip				=$_POST['nip'];
-	$hak_cuti_tahunan	=$_POST['hak_cuti_tahunan'];
+	$nip				= htmlspecialchars($_POST['nip']);
+	$hak_cuti_tahunan	= htmlspecialchars($_POST['hak_cuti_tahunan']);
 	
 		if (empty($_POST['nip']) || empty($_POST['hak_cuti_tahunan'])) {
 		echo "<div class='register-logo'><b>Oops!</b> Data Tidak Lengkap.</div>
