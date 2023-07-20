@@ -29,7 +29,7 @@
         }
         $idcuti = $_POST['idcuti'];
         $approval = ($_POST['approval'] === 'setujui') ? 1 : 0;
-        $msg = ($_POST['approval'] === 'setuju') ? 'Disetujui' : 'Ditolak';
+        $msg = ($_POST['approval'] === 'setujui') ? 'Disetujui' : 'Ditolak';
 
         try {
             // mencoba mengupdate tb_cuti
