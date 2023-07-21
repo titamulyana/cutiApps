@@ -241,6 +241,9 @@ if (isset($_POST['ganti'])) {
 					case 'reset-password':
 						include "pages/master/reset-password.php";
 						break;
+          case 'reset-cuti':
+            include "pages/master/reset-cuti.php";
+            break;
 					case 'pegawai-tidak-aktif':
 						include "pages/master/pegawai-inactive.php";
 						break;

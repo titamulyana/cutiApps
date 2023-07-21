@@ -37,6 +37,28 @@
 							while ($row = mysqli_fetch_assoc($dataCuti)) {
 								$timestamp = strtotime($row['created_at']);
 								$date = date("Y-m-d", $timestamp);
+
+                switch (true) {
+                  case ($row['depApproval'] === null):
+                    $status = "Menunggu approval atasan";
+                    break;
+                  case ($row['sdmApproval'] === null):
+                    $status = "Menunggu approval HRD";
+                    break;
+                  case ($row['sdmApproval'] === '1' && $row['depApproval'] === '1'):
+                    $status = "Cuti Disetujui";
+                    break;
+                  case ($row['sdmApproval'] === '0'):
+                    $status = "HRD Tidak Menyetujui";
+                    break;
+                  case ($row['depApproval'] === '0'):
+                    $status = "Atasan Tidak Menyetujui";
+                    break;
+                  default:
+                    $status = "Status tidak diketahui";
+                    break;
+                }
+
 								$dep = ($row['depApproval'] === '1') ? 'Disetujui' : (($row['depApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
 								$sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
 								$nikPemohon = $row['nik'];
@@ -52,7 +74,7 @@
 									<td><?= $row['mulai'] ?></td>
 									<td><?= $row['selesai'] ?></td>
 									<td><?= $row['jenis_cuti'] ?></td>
-									<td><?= $sdm ?></td>
+									<td><?= $status ?></td>
 									<td>
 										<form action="home-admin.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
 											<input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
