@@ -173,7 +173,7 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
             include "pages/transaksi/approval-cuti-pegawai.php";
             break;
           case 'history-cuti-pegawai':
-            include "pages/view/history-cuti-pegawai.php";
+            include "pages/transaksi/history-cuti-pegawai.php";
             break;
           case 'approval-cuti':
             include "pages/transaksi/approval-cuti.php";

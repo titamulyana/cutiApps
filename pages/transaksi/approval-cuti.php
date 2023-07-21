@@ -113,7 +113,7 @@
 </section>
 <script>
   document.getElementById('exportButton').addEventListener('click', function() {
-    const table = document.getElementById('example2');
+    const table = document.getElementById('example1');
     const tableHTML = table.outerHTML;
 
     // Kirim data tabel ke server untuk konversi ke PDF
