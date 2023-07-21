@@ -11,7 +11,7 @@ if ($_SESSION['hak_akses'] != "hrd") {
 		<button type='button' onclick=location.href='index.php'>Back</button>");
 }
 include './dist/koneksi2.php';
-if ($_POST['ganti'] == "ganti") {
+if (isset($_POST['ganti'])) {
 	if (empty($_POST['new-password']))
 		echo "<script>alert('data tidak sesuai');</script>";
 

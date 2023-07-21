@@ -13,7 +13,7 @@
 			$_SESSION['nama_peg'] = $qry['nama_peg'];
 			$_SESSION['hak_akses'] = $qry['hak_akses'];
 			
-			if($qry['aktif']=="N"){
+			if($qry['soft_delete']==1){
             echo "<div class='register-logo'><b>Oops!</b> User Tidak Aktif.</div>	
 				<div class='register-box-body'>
 					<p>Harap tunggu beberapa saat, atau silahkan hubungi Admin Anda.</p>
