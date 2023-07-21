@@ -18,7 +18,7 @@ if (isset($_POST['ganti'])) {
   try {
     $newPassword = $_POST['new-password'];
     $nikGanti = $_SESSION['nik'];
-
+    // menupdate password kedalam table tb_users
     $query = mysqli_query($con, "UPDATE tb_users SET `password`='$newPassword' WHERE nik=$nikGanti");
 
     // Mengeksekusi query ganti password
@@ -61,12 +61,6 @@ if (isset($_POST['ganti'])) {
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <script type="text/javascript" src="plugins/datatables/jquery.js"></script>
 </head>
-<?php
-
-$nik = $_SESSION['nik'];
-$query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
-?>
-
 <body class="hold-transition skin-red fixed sidebar-mini">
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog">
@@ -130,14 +124,21 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
           <li class="treeview <?= @$_GET['page'] == 'form-permohonan-cuti-tahunan' ? 'active' : '' ?>"><a href="home-pegawai.php?page=form-permohonan-cuti-tahunan"><i class="fa fa-book"></i> <span>Permohonan Cuti</span></i></a>
           <li class="treeview <?= @$_GET['page'] == 'history-cuti-pegawai' ? 'active' : '' ?>"><a href="home-pegawai.php?page=history-cuti-pegawai"><i class="fa fa-exchange"></i> <span>History</span></a></li>
           <?php
+          $nik = $_SESSION['nik'];
+          // mencari data bawahan dari table tb_users
+          $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
           if ($query && mysqli_num_rows($query) > 0) {
             $dataArray = array();
             while ($row = mysqli_fetch_assoc($query)) {
               $dataArray[] = $row;
             }
+            // menyimpan nik bawahan dalam bentuk array string
             $nikList = "'" . implode("','", array_column($dataArray, 'nik')) . "'";
+            // mencari nik bawahan yang membutuhkan persetujuan / approval cuti di table tb_cuti
             $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik in ($nikList) AND depApproval IS NULL");
             $numRows = mysqli_num_rows($dataCuti);
+
+            // jika ditemukan ada permohonan yg belum diajukan maka akan muncul "Task"
             if ($numRows > 0) {
               $actived = @$_GET['page'] == 'approval-cuti' ? 'active' : '';
               echo "<li class='treeview $actived'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i>

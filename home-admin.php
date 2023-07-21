@@ -60,8 +60,6 @@ if (isset($_POST['ganti'])) {
 	<link rel="stylesheet" href="plugins/morris/morris.css">
 	<!-- jvectormap -->
 	<link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-	<!-- Date Picker -->
-	<link rel="stylesheet" href="plugins/datepicker/bootstrap-datetimepicker.min.css">
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 	<!-- DataTables -->
@@ -135,11 +133,9 @@ if (isset($_POST['ganti'])) {
 		<aside class="main-sidebar">
 			<section class="sidebar" style="background-color: #0A4D68 !important;">
 				<ul class="sidebar-menu">
-					<li class="header" style="background-color: #0A4D68 !important;">MAIN NAVIGATION</li>
 					<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
 					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
-							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
 							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai Aktif</a></li>
 							<li><a href="home-admin.php?page=pegawai-tidak-aktif"> <i class="fa fa-users"></i> Pegawai Tidak Aktif</a></li>
 							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
@@ -152,7 +148,6 @@ if (isset($_POST['ganti'])) {
 					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
 					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
-							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
 							<li><a href="home-admin.php?page=report-approved-cuti"> <i class="fa fa-check-square-o"></i> Approved</a></li>
 							<li><a href="home-admin.php?page=report-all-cuti"> <i class="fa fa-minus-square-o"></i> All</a></li>
 						</ul>

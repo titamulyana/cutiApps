@@ -6,15 +6,20 @@
 </section>
 <?php
 include "dist/koneksi.php";
+
+// mencari total data cuti
 $cuti = mysqli_query($con, "SELECT * FROM tb_cuti");
 $jmlcuti = mysqli_num_rows($cuti);
 
+// mencari cuti yang diapprove
 $approve = mysqli_query($con, "SELECT * FROM tb_cuti WHERE sdmApproval='1' AND depApproval='1'");
 $jmlapprove = mysqli_num_rows($approve);
 
+// mencari cuti yang menunggu persetujuan
 $wait = mysqli_query($con, "SELECT * FROM tb_cuti WHERE sdmApproval IS NULL OR depApproval IS NULL");
 $jmlwait = mysqli_num_rows($wait);
 
+// mencari total pegawai
 $pegawai = mysqli_query($con, "SELECT * FROM tb_users");
 $jmlpegawai = mysqli_num_rows($pegawai);
 ?>

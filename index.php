@@ -17,7 +17,6 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +24,7 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <style>
-    body {
+  body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
       margin: 0;
@@ -92,9 +91,5 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
     }
     ?>
   </section>
-
-
-
 </body>
-
 </html>
