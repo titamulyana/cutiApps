@@ -1,15 +1,15 @@
 <section class="content-header">
-    <h1>Approval<small>Cuti</small></h1>
-    <ol class="breadcrumb">
-        <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Approval Cuti</li>
-    </ol>
+  <h1>Approval<small>Cuti</small></h1>
+  <ol class="breadcrumb">
+    <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+    <li class="active">Approval Cuti</li>
+  </ol>
 </section>
 <div class="register-box">
-    <?php
-    include "dist/koneksi.php";
+  <?php
+  include "dist/koneksi.php";
 
-    if ($_POST['save'] == "save") {
+  if ($_POST['save'] == "save") {
 
         // data tidak boleh kosong
         if (empty($_POST['idcuti']) || empty($_POST['approval'])) {
@@ -47,8 +47,8 @@
                 </div>
               </div>
             </div>";
-            } else {
-                echo "<div class='register-logo'><b>Terjadi Kesalahan , silahkan ajukan ulang!</div>
+      } else {
+        echo "<div class='register-logo'><b>Terjadi Kesalahan , silahkan ajukan ulang!</div>
               <div class='box box-primary'>
                 <div class='register-box-body'>
                   <p>Update failed:" . mysqli_error($con) . "</p>
@@ -60,9 +60,9 @@
                   </div>
                 </div>
               </div>";
-            }
-        } catch (Exception $e) {
-            echo "<div class='register-logo'><b>Terjadi Kesalahan!!!</div>
+      }
+    } catch (Exception $e) {
+      echo "<div class='register-logo'><b>Terjadi Kesalahan!!!</div>
 			<div class='box box-primary'>
 				<div class='register-box-body'>
 					<p>Update failed:" . $e->getMessage() . "</p>
@@ -74,8 +74,8 @@
 					</div>
 				</div>
 			</div>";
-            exit();
-        }
+      exit();
     }
-    ?>
+  }
+  ?>
 </div>
