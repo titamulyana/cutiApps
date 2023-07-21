@@ -1,9 +1,17 @@
 RewriteEngine On
 RewriteBase /8080/
 
+# Set index.php sebagai halaman default
+DirectoryIndex index.php
+
 # Periksa apakah permintaan bukan untuk file yang ada (misalnya gambar atau file CSS)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite URL eksternal ke URL internal
 RewriteRule ^home-pegawai/form-permohonan-cuti$ /home-pegawai.php?page=form-permohonan-cuti-tahunan [L]
+
+# Redirect ke halaman default index.php jika URL tidak valid
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php [L]
