@@ -138,7 +138,7 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
             $nikList = "'" . implode("','", array_column($dataArray, 'nik')) . "'";
             $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik in ($nikList) AND depApproval IS NULL");
             $numRows = mysqli_num_rows($dataCuti);
-            if ($numRows > 0) {
+            if ($numRows > 0) { 
               echo "<li class='treeview'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i>
                 <span>Approval Cuti</span>
                 <div class='custom-btn' style='display: inline-block;

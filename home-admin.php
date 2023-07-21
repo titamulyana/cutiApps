@@ -106,10 +106,10 @@ if ($_POST['ganti'] == "ganti") {
 	</div>
 	<div class="wrapper">
 		<header class="main-header">
-			<a href="home-admin.php" class="logo">
+			<a href="home-admin.php" style="background-color: #088395;" class="logo">
 				<img src=" ./dist/img/log.png" alt="Logo" style="width: 100%;  height: 100%;  object-fit: contain;">
 			</a>
-			<nav class="navbar navbar-static-top" role="navigation">
+			<nav class="navbar navbar-static-top" style="background-color: #088395;" role="navigation">
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
@@ -133,9 +133,9 @@ if ($_POST['ganti'] == "ganti") {
 			</nav>
 		</header>
 		<aside class="main-sidebar">
-			<section class="sidebar">
+			<section class="sidebar" style="background-color: #0A4D68 !important;">
 				<ul class="sidebar-menu">
-					<li class="header">MAIN NAVIGATION</li>
+					<li class="header" style="background-color: #0A4D68 !important;">MAIN NAVIGATION</li>
 					<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
 					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -147,7 +147,8 @@ if ($_POST['ganti'] == "ganti") {
 							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li>
 						</ul>
 					</li>
-					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
+					<li class='treeview'><a href='home-admin.php?page=form-permohonan-cuti-tahunan'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
+					<li class="treeview"><a href="home-admin.php?page=history-cuti-hrd"><i class="fa fa-exchange"></i> <span>History</span></a></li>
 					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
 					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -164,18 +165,6 @@ if ($_POST['ganti'] == "ganti") {
 				<?php
 				$page = (isset($_GET['page'])) ? $_GET['page'] : "main";
 				switch ($page) {
-					case 'form-master-user':
-						include "pages/master/form-master-user.php";
-						break;
-					case 'pre-activated-deactivate-user':
-						include "pages/master/pre-activated-deactivate-user.php";
-						break;
-					case 'activated-user':
-						include "pages/master/activated-user.php";
-						break;
-					case 'deactivate-user':
-						include "pages/master/deactivate-user.php";
-						break;
 					case 'form-master-pegawai':
 						include "pages/master/form-master-pegawai.php";
 						break;
@@ -259,6 +248,15 @@ if ($_POST['ganti'] == "ganti") {
 						break;
 					case 'pegawai-tidak-aktif':
 						include "pages/master/pegawai-inactive.php";
+						break;
+					case 'form-permohonan-cuti-tahunan':
+						include "pages/permohonan-cuti-hr/form-permohonan-cuti-tahunan.php";
+						break;
+					case 'permohonan-cuti':
+						include "pages/permohonan-cuti-hr/permohonan-cuti-tahunan.php";
+						break;
+					case 'history-cuti-hrd':
+						include "pages/view/history-cuti-hrd.php";
 						break;
 					default:
 						include 'dashboard.php';

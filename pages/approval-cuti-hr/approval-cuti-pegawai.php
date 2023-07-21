@@ -11,9 +11,9 @@
 
   if ($_POST['save'] == "save") {
 
-        // data tidak boleh kosong
-        if (empty($_POST['idcuti']) || empty($_POST['approval'])) {
-            echo "<div class='register-logo'><b>Oops!</b>Oops ! Terjadi Kesalahan.</div>
+    // data tidak boleh kosong
+    if (empty($_POST['idcuti']) || empty($_POST['approval'])) {
+      echo "<div class='register-logo'><b>Oops!</b>Oops ! Terjadi Kesalahan.</div>
 			<div class='box box-primary'>
 				<div class='register-box-body'>
 					<p>Harap periksa kembali dan pastikan data yang Anda masukan lengkap dan benar</p>
@@ -25,18 +25,17 @@
 					</div>
 				</div>
 			</div>";
-            exit();
-        }
-        $idcuti = $_POST['idcuti'];
-        $approval = ($_POST['approval'] === 'setujui') ? 1 : 0;
-        $msg = ($_POST['approval'] === 'setujui') ? 'Disetujui' : 'Ditolak';
-        
+      exit();
+    }
+    $idcuti = $_POST['idcuti'];
+    $approval = ($_POST['approval'] === 'setujui') ? 1 : 0;
+    $msg = ($_POST['approval'] === 'setujui') ? 'Disetujui' : 'Ditolak';
 
-        try {
-            // mencoba mengupdate tb_cuti
-            $editApproval = mysqli_query($con, "UPDATE tb_cuti SET sdmApproval='$approval', sdmApproval=timestamp NOW()  WHERE id='$idcuti'");
-            if ($editApproval && mysqli_affected_rows($con) > 0) {
-                echo "<div class='register-logo'><b>Cuti $msg </div>
+    try {
+      // mencoba mengupdate tb_cuti
+      $editApproval = mysqli_query($con, "UPDATE tb_cuti SET sdmApproval='$approval', sdmApproval_at=now()  WHERE id='$idcuti'");
+      if ($editApproval && mysqli_affected_rows($con) > 0) {
+        echo "<div class='register-logo'><b>Cuti $msg </div>
             <div class='box box-primary'>
               <div class='register-box-body'>
                 <div class='row'>
