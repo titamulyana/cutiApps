@@ -10,6 +10,27 @@ if ($_SESSION['hak_akses'] != "hrd") {
 		<p>Anda Bukan Admin.</p>
 		<button type='button' onclick=location.href='index.php'>Back</button>");
 }
+include './dist/koneksi2.php';
+if ($_POST['ganti'] == "ganti") {
+	if (empty($_POST['new-password']))
+		echo "<script>alert('data tidak sesuai');</script>";
+
+	try {
+		$newPassword = $_POST['new-password'];
+		$nikGanti = $_SESSION['nik'];
+
+		$query = mysqli_query($con, "UPDATE tb_users SET `password`='$newPassword' WHERE nik=$nikGanti");
+
+		// Mengeksekusi query ganti password
+		if ($query) {
+			echo "<script>alert('Password Berhasil diganti');</script>";
+		} else {
+			echo "<script>alert('Gagal ganti password');</script>";
+		}
+	} catch (Exception $e) {
+		echo "<script>alert('" . $e . "');</script>";
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,9 +77,38 @@ if ($_SESSION['hak_akses'] != "hrd") {
 </head>
 
 <body class="hold-transition skin-red fixed sidebar-mini">
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Ganti Password</h4>
+				</div>
+				<div class="modal-body">
+					<form method="POST">
+						<!-- Your form fields go here -->
+						<div class="form-group">
+							<label for="new-password">Password Baru</label>
+							<input type="password" name="new-password" class="form-control" id="new-password" placeholder="Enter new password" required>
+						</div>
+						<!-- Add other form fields as needed -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">BATAL</button>
+							<button name="ganti" value="ganti" type="submit" class="btn btn-primary">SIMPAN</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<div class="wrapper">
 		<header class="main-header">
-			<a href="home-admin.php" class="logo"><span class="logo-mini">CUTI</span><span class="logo-lg"><b>Cuti</b> ONLINE</span></a>
+			<a href="home-admin.php" class="logo">
+				<img src=" ./dist/img/log.png" alt="Logo" style="width: 100%;  height: 100%;  object-fit: contain;">
+			</a>
 			<nav class="navbar navbar-static-top" role="navigation">
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
 				<div class="navbar-custom-menu">
@@ -66,27 +116,18 @@ if ($_SESSION['hak_akses'] != "hrd") {
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
-								<span class="hidden-xs">Aplikasi Pengajuan Cuti Online</span> &nbsp;<i class="fa fa-angle-down"></i>
+								<span class="hidden-xs"><?php echo $_SESSION['nama_peg'] ?></span> &nbsp;<i class="fa fa-angle-down"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="user-header">
-									<img src='dist/img/profile/no-image.jpg' class='img-circle' alt='User Image'>
-									<p>Welcome - <?php echo $_SESSION['nama_peg'] ?><small><?php echo $_SESSION['hak_akses'] ?></small></p>
-								</li>
-								<li class="user-body">
-									<div class="row">
-									</div>
+								<li class="user-footer">
+									<center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Ganti Password</button></center>
 								</li>
 								<li class="user-footer">
-									<div class="pull-left">
-										<?php echo date("d-m-Y"); ?>
-									</div>
-									<div class="pull-right">
-										<a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
-									</div>
+									<a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
 								</li>
-							</ul>
 						</li>
+					</ul>
+					</li>
 					</ul>
 				</div>
 			</nav>
@@ -99,12 +140,14 @@ if ($_SESSION['hak_akses'] != "hrd") {
 					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
 							<!-- <li><a href="home-admin.php?page=form-master-user"> <i class="fa fa-caret-right"></i> User</a></li> -->
-							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai</a></li>
+							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai Aktif</a></li>
+							<li><a href="home-admin.php?page=pegawai-tidak-aktif"> <i class="fa fa-users"></i> Pegawai Tidak Aktif</a></li>
 							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
 							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-th-list"></i> Jabatan</a></li>
 							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li>
 						</ul>
 					</li>
+					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
 					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
 					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -210,6 +253,12 @@ if ($_SESSION['hak_akses'] != "hrd") {
 						break;
 					case 'delete-data-jenis-cuti':
 						include "pages/master/delete-data-jenis-cuti.php";
+						break;
+					case 'reset-password':
+						include "pages/master/reset-password.php";
+						break;
+					case 'pegawai-tidak-aktif':
+						include "pages/master/pegawai-inactive.php";
 						break;
 					default:
 						include 'dashboard.php';

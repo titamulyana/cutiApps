@@ -33,7 +33,7 @@
 			empty($_POST['nik']) || empty($_POST['nama_peg']) || empty($_POST['jk']) || empty($_POST['jabatan'])
 			|| empty($_POST['hak_akses']) || empty($_POST['tmpt_lahir']) || empty($_POST['tgl_lahir']) || empty($_POST['agama']) ||
 			empty($_POST['status']) || empty($_POST['telp']) || empty($_POST['email']) || empty($_POST['departemen']) ||
-			empty($_POST['id_atas']) || empty($_POST['alamat']) || empty($_POST['hak_cuti_tahunan']) || empty($_POST['cuti_hamil'])
+			empty($_POST['id_atas']) || empty($_POST['alamat']) || empty($_POST['hak_cuti_tahunan'])
 		) {
 			$_SESSION['form_input_pegawai'] = [
 				'nik' => $nik,

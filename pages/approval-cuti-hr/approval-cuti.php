@@ -17,6 +17,7 @@
 						<thead>
 							<tr>
 								<th>Nama Pegawai</th>
+								<th>NIK</th>
 								<th>Tgl Pengajuan</th>
 								<th>Jumlah Hari</th>
 								<th>Keterangan Cuti</th>
@@ -39,11 +40,12 @@
 								$dep = ($row['depApproval'] === '1') ? 'Disetujui' : (($row['depApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
 								$sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
 								$nikPemohon = $row['nik'];
-								$query = mysqli_query($con, "SELECT nama_peg from tb_users where nik='$nikPemohon'");
+								$query = mysqli_query($con, "SELECT nama_peg, nik from tb_users where nik='$nikPemohon'");
 								$data = mysqli_fetch_assoc($query)
 							?>
 								<tr>
 									<td><?= $data['nama_peg'] ?></td>
+									<td><?= $data['nik'] ?></td>
 									<td><?= $date ?></td>
 									<td><?= $row['lama'] ?></td>
 									<td><?= $row['alasan'] ?></td>
