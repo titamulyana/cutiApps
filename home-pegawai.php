@@ -11,7 +11,7 @@ if ($_SESSION['hak_akses'] != "pegawai") {
 		<button type='button' onclick=location.href='index.php'>Back</button>");
 }
 include './dist/koneksi2.php';
-if ($_POST['ganti'] == "ganti") {
+if (isset($_POST['ganti'])) {
   if (empty($_POST['new-password']))
     echo "<script>alert('data tidak sesuai');</script>";
 
@@ -126,9 +126,9 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
     <aside class="main-sidebar" style="background-color: #186E89;">
       <section class="sidebar">
         <ul class="sidebar-menu">
-          <li class="treeview"><a href="home-pegawai.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
-          <li class="treeview"><a href="home-pegawai.php?page=form-permohonan-cuti-tahunan"><i class="fa fa-book"></i> <span>Permohonan Cuti</span></i></a>
-          <li class="treeview"><a href="home-pegawai.php?page=history-cuti-pegawai"><i class="fa fa-exchange"></i> <span>History</span></a></li>
+          <li class="treeview <?= !isset($_GET['page']) ? 'active' : '' ?>"><a href="home-pegawai.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
+          <li class="treeview <?= @$_GET['page'] == 'form-permohonan-cuti-tahunan' ? 'active' : '' ?>"><a href="home-pegawai.php?page=form-permohonan-cuti-tahunan"><i class="fa fa-book"></i> <span>Permohonan Cuti</span></i></a>
+          <li class="treeview <?= @$_GET['page'] == 'history-cuti-pegawai' ? 'active' : '' ?>"><a href="home-pegawai.php?page=history-cuti-pegawai"><i class="fa fa-exchange"></i> <span>History</span></a></li>
           <?php
           if ($query && mysqli_num_rows($query) > 0) {
             $dataArray = array();
@@ -138,8 +138,9 @@ $query = mysqli_query($con, "SELECT * from tb_users where id_atas='$nik'");
             $nikList = "'" . implode("','", array_column($dataArray, 'nik')) . "'";
             $dataCuti = mysqli_query($con, "SELECT * FROM tb_cuti WHERE nik in ($nikList) AND depApproval IS NULL");
             $numRows = mysqli_num_rows($dataCuti);
-            if ($numRows > 0) { 
-              echo "<li class='treeview'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i>
+            if ($numRows > 0) {
+              $actived = @$_GET['page'] == 'approval-cuti' ? 'active' : '';
+              echo "<li class='treeview $actived'><a href='home-pegawai.php?page=approval-cuti'><i class='fa fa-book'></i>
                 <span>Approval Cuti</span>
                 <div class='custom-btn' style='display: inline-block;
                 background-color: yellow;
