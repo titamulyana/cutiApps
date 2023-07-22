@@ -57,7 +57,7 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 										<div class="form-group">
 											<label class="col-sm-3 control-label">NIK</label>
 											<div class="col-sm-7">
-												<input required type="text" name="nik" id="nik" class="form-control" value="<?= @$_SESSION['form_input_pegawai']['nik'] ?>" />
+												<input oninput="this.value = this.value.replace(/[^0-9\-]+/g, '').replace(/(\..*)\./g, '$1');" maxlength="10" required type="text" name="nik" id="nik" class="form-control" value="<?= @$_SESSION['form_input_pegawai']['nik'] ?>" />
 												<!-- <input required type="hidden" name="nip" id="nip" value="" /> -->
 											</div>
 										</div>
