@@ -30,10 +30,14 @@
     $idcuti = $_POST['idcuti'];
     $approval = ($_POST['approval'] === 'setujui') ? 1 : 0;
     $msg = ($_POST['approval'] === 'setujui') ? 'Disetujui' : 'Ditolak';
+    $jeniscuti = $_POST['jeniscuti'];
+    $lama = $_POST['lama'];
+    $nik = $_POST['nik'];
 
     try {
       // mencoba mengupdate tb_cuti
       $editApproval = mysqli_query($con, "UPDATE tb_cuti SET sdmApproval='$approval', sdmApproval_at=now()  WHERE id='$idcuti'");
+      $updateCuti = mysqli_query($con, "UPDATE tb_users SET $jeniscuti= $jeniscuti - $lama WHERE nik='$nik'");
       if ($editApproval && mysqli_affected_rows($con) > 0) {
         echo "<div class='register-logo'><b>Cuti $msg </div>
             <div class='box box-primary'>

@@ -65,12 +65,12 @@ $jmlpegawai = mysqli_num_rows($pegawai);
 			<div class="small-box bg-red">
 				<div class="inner">
 					<h3><?php echo $jmlpegawai; ?></h3>
-					<p>Total Pegawai</p>
+					<p>Total Karyawan</p>
 				</div>
 				<div class="icon">
 					<i class="ion ion-person-add"></i>
 				</div>
-				<p class="small-box-footer">Pegawai <i class="fa fa-arrow-circle-right"></i></p>
+				<p class="small-box-footer">Karyawan <i class="fa fa-arrow-circle-right"></i></p>
 			</div>
 		</div>
 	</div>

@@ -140,7 +140,7 @@ if (isset($_POST['ganti'])) {
 							<!-- <li><a href="home-admin.php?page=pegawai-tidak-aktif"> <i class="fa fa-users"></i> Karyawan Tidak Aktif</a></li> -->
 							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
 							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-th-list"></i> Jabatan</a></li>
-							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li>
+							<!-- <li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li> -->
 						</ul>
 					</li>
 					<li class='treeview'><a href='home-admin.php?page=form-permohonan-cuti-tahunan'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
@@ -223,27 +223,27 @@ if (isset($_POST['ganti'])) {
 					case 'delete-data-jabatan':
 						include "pages/master/delete-data-jabatan.php";
 						break;
-					case 'form-master-jenis-cuti':
-						include "pages/master/form-master-data-jenis-cuti.php";
-						break;
-					case 'master-jenis-cuti':
-						include "pages/master/master-jenis-cuti.php";
-						break;
-					case 'form-edit-data-jenis-cuti':
-						include "pages/master/form-edit-data-jenis-cuti.php";
-						break;
-					case 'edit-data-jenis-cuti':
-						include "pages/master/edit-data-jenis-cuti.php";
-						break;
-					case 'delete-data-jenis-cuti':
-						include "pages/master/delete-data-jenis-cuti.php";
-						break;
+					// case 'form-master-jenis-cuti':
+					// 	include "pages/master/form-master-data-jenis-cuti.php";
+					// 	break;
+					// case 'master-jenis-cuti':
+					// 	include "pages/master/master-jenis-cuti.php";
+					// 	break;
+					// case 'form-edit-data-jenis-cuti':
+					// 	include "pages/master/form-edit-data-jenis-cuti.php";
+					// 	break;
+					// case 'edit-data-jenis-cuti':
+					// 	include "pages/master/edit-data-jenis-cuti.php";
+					// 	break;
+					// case 'delete-data-jenis-cuti':
+					// 	include "pages/master/delete-data-jenis-cuti.php";
+					// 	break;
 					case 'reset-password':
 						include "pages/master/reset-password.php";
 						break;
-          case 'reset-cuti':
-            include "pages/master/reset-cuti.php";
-            break;
+					case 'reset-cuti':
+						include "pages/master/reset-cuti.php";
+						break;
 					case 'pegawai-tidak-aktif':
 						include "pages/master/pegawai-inactive.php";
 						break;

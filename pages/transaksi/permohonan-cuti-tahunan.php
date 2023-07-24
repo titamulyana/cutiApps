@@ -68,7 +68,7 @@
       }
 
       $selesai  = $_POST['selesai'];
-      $jenis = ($_POST['jenis'] === 'tahunan') ? 'hak_cuti_tahunan' : 'cuti_hamil';
+      $jenis = $_POST['jenis'];
       $alasan = $_POST['alasan'];
 
       // check tanggal selesai tidak boleh sebelum tanggal mulai  ( tanngal_selesai < tanggal_mulai )
@@ -116,8 +116,17 @@
         exit();
       }
 
-      $queryCuti = "INSERT INTO tb_cuti (nik, jenis_cuti, mulai, selesai, lama, alasan)
-      VALUES ('$nik', '$jenis', '$mulai', '$selesai', '$jml_hari', '$alasan')";
+      $atasan = mysqli_query($con, "SELECT * FROM tb_users WHERE nik='$nik'");
+      $data_atasan = mysqli_fetch_array($atasan);
+      $nik_hrd = mysqli_query($con, "SELECT * FROM tb_users WHERE hak_akses='hrd'");
+      $data_hrd = mysqli_fetch_array($nik_hrd);
+      if ($data_atasan['id_atas'] === $data_hrd['nik']) {
+        $queryCuti = "INSERT INTO tb_cuti (nik, jenis_cuti, mulai, selesai, lama, alasan, depApproval,depApproval_at)
+        VALUES ('$nik', '$jenis', '$mulai', '$selesai', '$jml_hari', '$alasan', 1, now())";
+      } else {
+        $queryCuti = "INSERT INTO tb_cuti (nik, jenis_cuti, mulai, selesai, lama, alasan)
+        VALUES ('$nik', '$jenis', '$mulai', '$selesai', '$jml_hari', '$alasan')";
+      }
       $updateCuti = mysqli_query($con, $queryCuti);
       if (mysqli_affected_rows($con) > 0) {
         echo "<div class='register-logo'><b>Permohon Cuti Berhasil Diajukan</div>

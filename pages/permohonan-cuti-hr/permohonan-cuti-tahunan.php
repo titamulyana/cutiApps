@@ -69,7 +69,7 @@
       }
 
       $selesai  = $_POST['selesai'];
-      $jenis = ($_POST['jenis'] === 'tahunan') ? 'hak_cuti_tahunan' : 'cuti_hamil';
+      $jenis = ($_POST['jenis'] === 'hak_cuti_tahunan') ? 'hak_cuti_tahunan' : 'cuti_hamil';
       $alasan = $_POST['alasan'];
 
       // check tanggal selesai tidak boleh sebelum tanggal mulai  ( tanngal_selesai < tanggal_mulai )
@@ -94,8 +94,6 @@
       $selisih = $selisih / 86400;
       $jml_hari = 1 + $selisih;
 
-      if ($jenis == 'tahunan') {
-      }
       $query = mysqli_query($con, "SELECT $jenis FROM tb_users WHERE nik='$nik'");
       $data = mysqli_fetch_array($query);
       $hak = $data[$jenis];

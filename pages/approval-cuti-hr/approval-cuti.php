@@ -78,6 +78,9 @@
 									<td>
 										<form action="home-admin.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
 											<input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
+											<input type="hidden" value="<?= $row['lama'] ?>" name="lama">
+											<input type="hidden" value="<?= $row['nik'] ?>" name="nik">
+											<input type="hidden" value="<?= $row['jenis_cuti'] ?>" name="jeniscuti">
 											<input type="hidden" value="setujui" name="approval">
 											<button type="submit" name="save" value="save" <?php if ($sdm !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-success" onclick="return confirm('Apakah anda yakin akan menyetujui permohan cuti <?= $data['nama_peg'] ?>?')">
 												<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -86,6 +89,9 @@
 									<td>
 										<form action="home-admin.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
 											<input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
+											<input type="hidden" value="<?= $row['nik'] ?>" name="nik">
+											<input type="hidden" value="<?= $row['lama'] ?>" name="lama">
+											<input type="hidden" value="<?= $row['jenis_cuti'] ?>" name="jeniscuti">
 											<input type="hidden" value="tolak" name="approval">
 											<button name="save" value="save" type="submit" <?php if ($sdm !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menolak permohan cuti <?= $data['nama_peg'] ?>')">
 												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
