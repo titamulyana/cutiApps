@@ -136,8 +136,8 @@ if (isset($_POST['ganti'])) {
 					<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
 					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
-							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Pegawai Aktif</a></li>
-							<li><a href="home-admin.php?page=pegawai-tidak-aktif"> <i class="fa fa-users"></i> Pegawai Tidak Aktif</a></li>
+							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Karyawan Aktif</a></li>
+							<li><a href="home-admin.php?page=pegawai-tidak-aktif"> <i class="fa fa-users"></i> Karyawan Tidak Aktif</a></li>
 							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
 							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-th-list"></i> Jabatan</a></li>
 							<li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li>
@@ -262,10 +262,7 @@ if (isset($_POST['ganti'])) {
 				?>
 			</section>
 		</div>
-		<footer class="main-footer">
-			<!-- <div class="pull-right hidden-xs"><b>Version</b> 1.0</div> -->
-			Copyright &copy; 2023 <a href="#" target="_blank">cuti ONLINE</a>. All rights reserved
-		</footer>
+
 	</div>
 	<!-- ./wrapper -->
 	<!-- jQuery 2.1.4 -->
