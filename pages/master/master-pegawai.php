@@ -1,8 +1,8 @@
 <section class="content-header">
-	<h1>Input<small>Data Pegawai</small></h1>
+	<h1>Input<small>Data Karyawan</small></h1>
 	<ol class="breadcrumb">
 		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-		<li class="active">Input Data Pegawai</li>
+		<li class="active">Input Data Karyawan</li>
 	</ol>
 </section>
 <div class="register-box">
@@ -77,7 +77,7 @@
 			if ($query) {
 				echo "<div class='register-logo'><b>Input Data</b> Successful!</div>	
 				<div class='register-box-body'>
-					<p>Input Data Pegawai Berhasil</p>
+					<p>Input Data Karyawan Berhasil</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>

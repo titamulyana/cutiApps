@@ -1,8 +1,8 @@
 <section class="content-header">
-  <h1>Scan Cuti<small>Pegawai</small></h1>
+  <h1>Scan Cuti<small>Karyawan</small></h1>
   <ol class="breadcrumb">
     <li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-    <li class="active">Scan Cuti Pegawai</li>
+    <li class="active">Scan Cuti Karyawan</li>
   </ol>
 </section>
 <div class="register-box">

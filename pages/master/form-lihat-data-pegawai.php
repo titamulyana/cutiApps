@@ -13,10 +13,10 @@ $hasil = mysqli_fetch_array($ambilData);
 $nik = $hasil['nik'];
 ?>
 <section class="content-header">
-	<h1>Form<small>Lihat Data Pegawai <b>#<?= $nik ?></b></small></h1>
+	<h1>Form<small>Lihat Data Karyawan <b>#<?= $nik ?></b></small></h1>
 	<ol class="breadcrumb">
 		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-		<li class="active">Lihat Data Pegawai</li>
+		<li class="active">Lihat Data Karyawan</li>
 	</ol>
 </section>
 <section class="content">

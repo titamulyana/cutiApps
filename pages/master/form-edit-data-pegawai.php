@@ -13,10 +13,10 @@ $hasil = mysqli_fetch_array($ambilData);
 $nik = $hasil['nik'];
 ?>
 <section class="content-header">
-	<h1>Form<small>Edit Data Pegawai <b>#<?= $nik ?></b></small></h1>
+	<h1>Form<small>Edit Data Karyawan <b>#<?= $nik ?></b></small></h1>
 	<ol class="breadcrumb">
 		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-		<li class="active">Edit Data Pegawai</li>
+		<li class="active">Edit Data Karyawan</li>
 	</ol>
 </section>
 <section class="content">
@@ -32,7 +32,7 @@ $nik = $hasil['nik'];
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">Nama Pegawai</label>
+							<label class="col-sm-3 control-label">Nama Karyawan</label>
 							<div class="col-sm-7">
 								<input value="<?php echo $hasil['nama_peg']; ?>" type="text" name="nama_peg" class="form-control" maxlength="64">
 							</div>
@@ -84,7 +84,7 @@ $nik = $hasil['nik'];
 											?> value="hrd">HRD</option>
 									<option <?php
 											echo $hasil['hak_akses'] === "pegawai" ? 'selected' : '';
-											?> value="pegawai">Pegawai</option>
+											?> value="karyawan">Karyawan</option>
 								</select>
 							</div>
 						</div>

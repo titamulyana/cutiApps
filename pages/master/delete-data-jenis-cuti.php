@@ -24,7 +24,7 @@
         if ($sqldel) {
             echo "<div class='register-logo'><b>Delete</b> Successful!</div>	
 				<div class='register-box-body'>
-					<p>Data Jabatan " . $id . " Berhasil di Hapus</p>
+					<p>Data Cuti " . $id . " Berhasil di Hapus</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>

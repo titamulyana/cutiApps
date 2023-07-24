@@ -1,8 +1,8 @@
 <section class="content-header">
-    <h1>Resset<small>Password Pegawai</small></h1>
+    <h1>Resset<small>Password Karyawan</small></h1>
     <ol class="breadcrumb">
         <li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Reset Password Pegawai</li>
+        <li class="active">Reset Password Karyawan</li>
     </ol>
 </section>
 <div class="register-box">
@@ -24,7 +24,7 @@
         if ($sqldel) {
             echo "<div class='register-logo'><b>reset password</b> Successful!</div>	
 				<div class='register-box-body'>
-					<p>Password data pegawai " . $data['nama_peg'] . " Berhasil di reset</p>
+					<p>Password data Karyawan " . $data['nama_peg'] . " Berhasil di reset</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>

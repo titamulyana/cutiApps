@@ -18,7 +18,7 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Nama Pegawai</th>
+                <th>Nama Karyawan</th>
                 <th>NIK </th>
                 <th>Tgl Pengajuan</th>
                 <th>Jumlah Hari</th>
