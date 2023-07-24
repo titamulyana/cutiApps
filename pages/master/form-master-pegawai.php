@@ -258,7 +258,7 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="home-admin.php?page=reset-password&nik=<?php echo $peg['nik']; ?>" title="reset pw"><i class="fa fa-undo"></i></a>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="home-admin.php?page=reset-cuti&nik=<?php echo $peg['nik']; ?>" title="reset pw"><i class="fa fa-refresh"></i></a>
+                  <a href="home-admin.php?page=reset-cuti&nik=<?php echo $peg['nik']; ?>" title="reset cuti"><i class="fa fa-refresh"></i></a>
                 </td>
               </tr>
             <?php
