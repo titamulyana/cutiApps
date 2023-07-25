@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-    <a href="index.php"><b>cuti</b> ONLINE</a>
+    <a href="index.php"><b>cuti</b> PT Nikomas Gemilang</a>
   </div>
   <div class="box box-primary">
     <div class="login-box-body">

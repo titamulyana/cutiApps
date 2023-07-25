@@ -143,8 +143,8 @@ if (isset($_POST['ganti'])) {
 							<!-- <li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li> -->
 						</ul>
 					</li>
-					<li class='treeview'><a href='home-admin.php?page=form-permohonan-cuti-tahunan'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
-					<li class="treeview"><a href="home-admin.php?page=history-cuti-hrd"><i class="fa fa-exchange"></i> <span>History</span></a></li>
+					<!-- <li class='treeview'><a href='home-admin.php?page=form-permohonan-cuti-tahunan'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
+					<li class="treeview"><a href="home-admin.php?page=history-cuti-hrd"><i class="fa fa-exchange"></i> <span>History</span></a></li> -->
 					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
 					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
@@ -247,15 +247,15 @@ if (isset($_POST['ganti'])) {
 					case 'pegawai-tidak-aktif':
 						include "pages/master/pegawai-inactive.php";
 						break;
-					case 'form-permohonan-cuti-tahunan':
-						include "pages/permohonan-cuti-hr/form-permohonan-cuti-tahunan.php";
-						break;
-					case 'permohonan-cuti':
-						include "pages/permohonan-cuti-hr/permohonan-cuti-tahunan.php";
-						break;
-					case 'history-cuti-hrd':
-						include "pages/view/history-cuti-hrd.php";
-						break;
+					// case 'form-permohonan-cuti-tahunan':
+					// 	include "pages/permohonan-cuti-hr/form-permohonan-cuti-tahunan.php";
+					// 	break;
+					// case 'permohonan-cuti':
+					// 	include "pages/permohonan-cuti-hr/permohonan-cuti-tahunan.php";
+					// 	break;
+					// case 'history-cuti-hrd':
+					// 	include "pages/view/history-cuti-hrd.php";
+					// 	break;
 					default:
 						include 'dashboard.php';
 				}
