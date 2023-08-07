@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>Form<small>Cuti</small></h1>
   <ol class="breadcrumb">
-    <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+    <li><a href="home-karyawan.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
     <li class="active">Form Pengajuan Cuti</li>
   </ol>
 </section>
@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
-        <form action="home-pegawai.php?page=permohonan-cuti-tahunan" class="form-horizontal" method="POST">
+        <form action="home-karyawan.php?page=permohonan-cuti-tahunan" class="form-horizontal" method="POST">
           <div class="box-body">
             <input type="hidden" value="<?= $_SESSION['nik'] ?>" name="nik">
             <div class="form-group">

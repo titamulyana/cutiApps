@@ -1,8 +1,8 @@
 <section class="content-header">
-	<h1>Master<small>Data Pegawai</small></h1>
+	<h1>Master<small>Data Karyawan</small></h1>
 	<ol class="breadcrumb">
 		<li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-		<li class="active">Data Pegawai</li>
+		<li class="active">Data Karyawan</li>
 	</ol>
 </section>
 <?php

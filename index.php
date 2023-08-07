@@ -3,14 +3,14 @@ ob_start();
 session_start();
 
 // check session yang tersimapn
-if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['hak_akses'])) {
+if (isset($_SESSION['nik']) && isset($_SESSION['nama_kry']) && isset($_SESSION['hak_akses'])) {
 
   if ($_SESSION['hak_akses'] === "hrd") {
     // menuju ke halaman hrd
     echo "<script>document.location.href='home-admin.php';</script>";
-  } else if ($_SESSION['hak_akses'] === "pegawai") {
-    // menuju kehalaman pegawai
-    echo "<script>document.location.href='home-pegawai.php';</script>";
+  } else if ($_SESSION['hak_akses'] === "karyawan") {
+    // menuju kehalaman karyawan
+    echo "<script>document.location.href='home-karyawan.php';</script>";
   }
   echo "<script>document.location.href='pages/login/act-logout.php';</script>";
 }
@@ -56,33 +56,33 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
   <body class="hold-transition skin-red fixed sidebar-mini">
     <div class="wrapper">
       <!-- <header class="main-header">
-		<a href="index.php" class="logo"><span class="logo-mini">CUTI</span><span class="logo-lg"><b>Cuti</b> ONLINE</span></a>
-		<nav class="navbar navbar-static-top" role="navigation">
-			<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
-			<div class="navbar-custom-menu">
-				<ul class="nav navbar-nav">
-					<li class="dropdown user user-menu">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
-							<span class="hidden-xs">Aplikasi Pengajuan Cuti Online</span>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="user-header">
-								<img src='dist/img/profile/no-image.jpg' class='img-circle' alt='User Image'>
-								<p>Aplikasi Pengajuan Cuti Online</p>
-							</li>
-							<li class="user-body">
-								<div class="row">
-									<div class="col-xs-12 text-center">
-									</div>
-								</div>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header> -->
+    <a href="index.php" class="logo"><span class="logo-mini">CUTI</span><span class="logo-lg"><b>Cuti</b> ONLINE</span></a>
+    <nav class="navbar navbar-static-top" role="navigation">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
+              <span class="hidden-xs">Aplikasi Pengajuan Cuti Online</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-header">
+                <img src='dist/img/profile/no-image.jpg' class='img-circle' alt='User Image'>
+                <p>Aplikasi Pengajuan Cuti Online</p>
+              </li>
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-12 text-center">
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header> -->
       <div class="content-wrapper">
         <section class="content">
           <?php

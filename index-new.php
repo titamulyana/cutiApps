@@ -3,20 +3,21 @@ ob_start();
 session_start();
 
 // check session yang tersimapn
-if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['hak_akses'])) {
+if (isset($_SESSION['nik']) && isset($_SESSION['nama_kry']) && isset($_SESSION['hak_akses'])) {
 
   if ($_SESSION['hak_akses'] === "hrd") {
     // menuju ke halaman hrd
     echo "<script>document.location.href='home-admin.php';</script>";
-  } else if ($_SESSION['hak_akses'] === "pegawai") {
-    // menuju kehalaman pegawai
-    echo "<script>document.location.href='home-pegawai.php';</script>";
+  } else if ($_SESSION['hak_akses'] === "karyawan") {
+    // menuju kehalaman karyawan
+    echo "<script>document.location.href='home-karyawan.php';</script>";
   }
   echo "<script>document.location.href='pages/login/act-logout.php';</script>";
 }
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +25,7 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <style>
-  body {
+    body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
       margin: 0;
@@ -38,6 +39,7 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
       /* background-size: cover; */
       background-position: center;
     }
+
     .login-container {
       background-color: rgba(0, 34, 51, 0.3);
       box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
@@ -46,12 +48,14 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
       width: 350px;
       text-align: center;
     }
+
     .login-logo {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 20px;
       color: #fff;
     }
+
     .login-form input {
       width: 100%;
       padding: 12px 20px;
@@ -60,6 +64,7 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
       border-radius: 4px;
       box-sizing: border-box;
     }
+
     .login-form button {
       background-color: #007bff;
       color: #fff;
@@ -69,15 +74,18 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
       cursor: pointer;
       width: 100%;
     }
+
     .login-form button:hover {
       background-color: #0056b3;
     }
+
     .login-form p {
       color: #888;
       margin-top: 15px;
     }
   </style>
 </head>
+
 <body>
   <section class="content">
     <?php
@@ -92,4 +100,5 @@ if (isset($_SESSION['nik']) && isset($_SESSION['nama_peg']) && isset($_SESSION['
     ?>
   </section>
 </body>
+
 </html>

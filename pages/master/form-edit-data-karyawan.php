@@ -7,7 +7,7 @@ if (isset($_GET['nik'])) {
 include "dist/koneksi.php";
 $departemen = mysqli_query($con, 'SELECT * from tb_departemen');
 $jabatan = mysqli_query($con, 'SELECT * from tb_jabatan');
-$atasan = mysqli_query($con, 'SELECT * FROM tb_users WHERE tb_users.hak_akses = "pegawai"');
+$atasan = mysqli_query($con, 'SELECT * FROM tb_users WHERE tb_users.hak_akses = "karyawan"');
 $ambilData = mysqli_query($con, "SELECT * FROM tb_users WHERE nik='$nik'");
 $hasil = mysqli_fetch_array($ambilData);
 $nik = $hasil['nik'];
@@ -16,14 +16,14 @@ $nik = $hasil['nik'];
   <h1>Form<small>Edit Data Karyawan <b>#<?= $nik ?></b></small></h1>
   <ol class="breadcrumb">
     <li><a href="home-admin.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-    <li class="active">Edit Data Pegawai</li>
+    <li class="active">Edit Data Karyawan</li>
   </ol>
 </section>
 <section class="content">
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
-        <form action="home-admin.php?page=edit-data-pegawai&nik=<?= $nik ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
+        <form action="home-admin.php?page=edit-data-karyawan&nik=<?= $nik ?>" class="form-horizontal" method="POST" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label class="col-sm-3 control-label">NIK</label>
@@ -35,7 +35,7 @@ $nik = $hasil['nik'];
             <div class="form-group">
               <label class="col-sm-3 control-label">Nama Karyawan</label>
               <div class="col-sm-7">
-                <input value="<?php echo $hasil['nama_peg']; ?>" type="text" name="nama_peg" class="form-control" maxlength="64">
+                <input value="<?php echo $hasil['nama_kry']; ?>" type="text" name="nama_kry" class="form-control" maxlength="64">
               </div>
             </div>
             <div class="form-group">
@@ -84,8 +84,8 @@ $nik = $hasil['nik'];
                           echo $hasil['hak_akses'] === "hrd" ? 'selected' : '';
                           ?> value="hrd">HRD</option>
                   <option <?php
-                          echo $hasil['hak_akses'] === "pegawai" ? 'selected' : '';
-                          ?> value="pegawai">Pegawai</option>
+                          echo $hasil['hak_akses'] === "karyawan" ? 'selected' : '';
+                          ?> value="karyawan">karyawan</option>
                 </select>
               </div>
             </div>
@@ -104,23 +104,23 @@ $nik = $hasil['nik'];
                 <select name="agama" class="form-control">
                   <option value="">Pilih</option>
                   <option <?php
-                          echo $hasil['agama'] == "islam" ? 'selected' : '';
-                          ?> value="islam">Islam</option>
+                          echo $hasil['agama'] == "Islam" ? 'selected' : '';
+                          ?> value="Islam">Islam</option>
                   <option <?php
-                          echo $hasil['agama'] == "protestan" ? 'selected' : '';
-                          ?> value="protestan">Protestan</option>
+                          echo $hasil['agama'] == "Protestan" ? 'selected' : '';
+                          ?> value="Protestan">Protestan</option>
                   <option <?php
-                          echo $hasil['agama'] == "katolik" ? 'selected' : '';
-                          ?> value="katolik">Katolik</option>
+                          echo $hasil['agama'] == "Katolik" ? 'selected' : '';
+                          ?> value="Katolik">Katolik</option>
                   <option <?php
-                          echo $hasil['agama'] == "hindu" ? 'selected' : '';
-                          ?> value="hindu">Hindu</option>
+                          echo $hasil['agama'] == "Hindu" ? 'selected' : '';
+                          ?> value="Hindu">Hindu</option>
                   <option <?php
-                          echo $hasil['agama'] == "budha" ? 'selected' : '';
-                          ?> value="budha">Budha</option>
+                          echo $hasil['agama'] == "Budha" ? 'selected' : '';
+                          ?> value="Budha">Budha</option>
                   <option <?php
-                          echo $hasil['agama'] == "kepercayaan" ? 'selected' : '';
-                          ?> value="kepercayaan">Kepercayaan</option>
+                          echo $hasil['agama'] == "Kepercayaan" ? 'selected' : '';
+                          ?> value="Kepercayaan">Kepercayaan</option>
                 </select>
               </div>
             </div>
@@ -181,7 +181,7 @@ $nik = $hasil['nik'];
                             if ($hasil['id_atas'] == $row['nik']) {
                               echo 'selected';
                             }
-                            ?> value="<?php echo $row['nik'] ?>"><?php echo $row['nama_peg'] ?></option>
+                            ?> value="<?php echo $row['nik'] ?>"><?php echo $row['nama_kry'] ?></option>
                   <?php
                   }
                   ?>
@@ -229,7 +229,7 @@ $nik = $hasil['nik'];
 <script type="text/javascript" src="plugins/datepicker/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/locales/bootstrap-datetimepicker.id.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../../dist/js/pages/form-pegawai.js"></script>
+<script type="text/javascript" src="../../dist/js/pages/form-karyawan.js"></script>
 <script type="text/javascript">
   $('.form_date').datetimepicker({
     language: 'id',

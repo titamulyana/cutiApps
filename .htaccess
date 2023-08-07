@@ -9,7 +9,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite URL eksternal ke URL internal
-RewriteRule ^home-pegawai/form-permohonan-cuti$ /home-pegawai.php?page=form-permohonan-cuti-tahunan [L]
+RewriteRule ^home-karyawan/form-permohonan-cuti$ /home-karyawan.php?page=form-permohonan-cuti-tahunan [L]
 
 # Redirect ke halaman default index.php jika URL tidak valid
 RewriteCond %{REQUEST_FILENAME} !-f

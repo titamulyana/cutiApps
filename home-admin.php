@@ -89,7 +89,8 @@ if (isset($_POST['ganti'])) {
 						<!-- Your form fields go here -->
 						<div class="form-group">
 							<label for="new-password">Password Baru</label>
-							<input type="password" name="new-password" class="form-control" id="new-password" placeholder="Enter new password" required>
+							<input type="password" name="new-password" class="form-control" id="new-password"
+								placeholder="Enter new password" required>
 						</div>
 						<!-- Add other form fields as needed -->
 						<div class="modal-footer">
@@ -108,17 +109,21 @@ if (isset($_POST['ganti'])) {
 				<img src=" ./dist/img/log.png" alt="Logo" style="width: 100%;  height: 100%;  object-fit: contain;">
 			</a>
 			<nav class="navbar navbar-static-top" style="background-color: #088395;" role="navigation">
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle
+						navigation</span></a>
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src='dist/img/profile/no-image.jpg' class='user-image' alt='User Image'>
-								<span class="hidden-xs"><?php echo $_SESSION['nama_peg'] ?></span> &nbsp;<i class="fa fa-angle-down"></i>
+								<span class="hidden-xs">
+									<?php echo $_SESSION['nama_kry'] ?>
+								</span> &nbsp;<i class="fa fa-angle-down"></i>
 							</a>
 							<ul class="dropdown-menu">
 								<li class="user-footer">
-									<center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Ganti Password</button></center>
+									<center><button type="button" class="btn btn-default" data-toggle="modal"
+											data-target="#myModal">Ganti Password</button></center>
 								</li>
 								<li class="user-footer">
 									<a href="pages/login/act-logout.php" class="btn btn-default btn-flat">Log out</a>
@@ -133,23 +138,32 @@ if (isset($_POST['ganti'])) {
 		<aside class="main-sidebar">
 			<section class="sidebar" style="background-color: #0A4D68 !important;">
 				<ul class="sidebar-menu">
-					<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
-					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i class="fa fa-angle-left pull-right"></i></a>
+					<li class="treeview"><a href="home-admin.php"><i class="fa fa-dashboard"></i>
+							<span>Dashboard</span></i></a></li>
+					<li class="treeview"><a href="#"><i class="fa fa-book"></i> <span>Master Data</span><i
+								class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
-							<li><a href="home-admin.php?page=form-master-pegawai"> <i class="fa fa-users"></i> Karyawan</a></li>
-							<!-- <li><a href="home-admin.php?page=pegawai-tidak-aktif"> <i class="fa fa-users"></i> Karyawan Tidak Aktif</a></li> -->
-							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i> Departement</a></li>
-							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-th-list"></i> Jabatan</a></li>
+							<li><a href="home-admin.php?page=form-master-karyawan"> <i class="fa fa-users"></i>
+									Karyawan</a></li>
+							<!-- <li><a href="home-admin.php?page=karyawan-tidak-aktif"> <i class="fa fa-users"></i> Karyawan Tidak Aktif</a></li> -->
+							<li><a href="home-admin.php?page=form-master-departemen"> <i class="fa fa-briefcase"></i>
+									Departement</a></li>
+							<li><a href="home-admin.php?page=form-master-jabatan"> <i class="fa fa-th-list"></i>
+									Jabatan</a></li>
 							<!-- <li><a href="home-admin.php?page=form-master-jenis-cuti"> <i class="fa fa-tasks"></i> Jenis Cuti</a></li> -->
 						</ul>
 					</li>
 					<!-- <li class='treeview'><a href='home-admin.php?page=form-permohonan-cuti-tahunan'><i class='fa fa-calendar'></i> <span>Permohonan Cuti</span></i></a>
 					<li class="treeview"><a href="home-admin.php?page=history-cuti-hrd"><i class="fa fa-exchange"></i> <span>History</span></a></li> -->
-					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i> <span>Approval Cuti</span></i></a>
-					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i class="fa fa-angle-left pull-right"></i></a>
+					<li class='treeview'><a href='home-admin.php?page=approval-cuti'><i class='fa fa-calendar'></i>
+							<span>Approval Cuti</span></i></a>
+					<li class="treeview"><a href="#"><i class="fa fa-print"></i> <span>Report</span><i
+								class="fa fa-angle-left pull-right"></i></a>
 						<ul class="treeview-menu">
-							<li><a href="home-admin.php?page=report-approved-cuti"> <i class="fa fa-check-square-o"></i> Approved</a></li>
-							<li><a href="home-admin.php?page=report-all-cuti"> <i class="fa fa-minus-square-o"></i> All</a></li>
+							<li><a href="home-admin.php?page=report-approved-cuti"> <i class="fa fa-check-square-o"></i>
+									Approved</a></li>
+							<li><a href="home-admin.php?page=report-all-cuti"> <i class="fa fa-minus-square-o"></i>
+									All</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -160,26 +174,26 @@ if (isset($_POST['ganti'])) {
 				<?php
 				$page = (isset($_GET['page'])) ? $_GET['page'] : "main";
 				switch ($page) {
-					case 'form-master-pegawai':
-						include "pages/master/form-master-pegawai.php";
+					case 'form-master-karyawan':
+						include "pages/master/form-master-karyawan.php";
 						break;
-					case 'form-edit-data-pegawai':
-						include "pages/master/form-edit-data-pegawai.php";
+					case 'form-edit-data-karyawan':
+						include "pages/master/form-edit-data-karyawan.php";
 						break;
 					case 'master-user':
 						include "pages/master/master-user.php";
 						break;
-					case 'master-pegawai':
-						include "pages/master/master-pegawai.php";
+					case 'master-karyawan':
+						include "pages/master/master-karyawan.php";
 						break;
-					case 'delete-data-pegawai':
-						include "pages/master/delete-data-pegawai.php";
+					case 'delete-data-karyawan':
+						include "pages/master/delete-data-karyawan.php";
 						break;
-					case 'edit-data-pegawai':
-						include "pages/master/edit-data-pegawai.php";
+					case 'edit-data-karyawan':
+						include "pages/master/edit-data-karyawan.php";
 						break;
-					case 'form-lihat-data-pegawai':
-						include "pages/master/form-lihat-data-pegawai.php";
+					case 'form-lihat-data-karyawan':
+						include "pages/master/form-lihat-data-karyawan.php";
 						break;
 					case 'form-master-departemen':
 						include "pages/master/form-master-data-departemen.php";
@@ -199,8 +213,8 @@ if (isset($_POST['ganti'])) {
 					case 'approval-cuti':
 						include "pages/approval-cuti-hr/approval-cuti.php";
 						break;
-					case 'approval-cuti-pegawai':
-						include "pages/approval-cuti-hr/approval-cuti-pegawai.php";
+					case 'approval-cuti-karyawan':
+						include "pages/approval-cuti-hr/approval-cuti-karyawan.php";
 						break;
 					case 'report-approved-cuti':
 						include "pages/report/approved.php";
@@ -244,8 +258,8 @@ if (isset($_POST['ganti'])) {
 					case 'reset-cuti':
 						include "pages/master/reset-cuti.php";
 						break;
-					case 'pegawai-tidak-aktif':
-						include "pages/master/pegawai-inactive.php";
+					case 'karyawan-tidak-aktif':
+						include "pages/master/karyawan-inactive.php";
 						break;
 					// case 'form-permohonan-cuti-tahunan':
 					// 	include "pages/permohonan-cuti-hr/form-permohonan-cuti-tahunan.php";

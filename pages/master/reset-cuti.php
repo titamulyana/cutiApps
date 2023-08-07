@@ -10,9 +10,9 @@
   include "dist/koneksi.php";
   if (isset($_GET['nik'])) {
     $nik = $_GET['nik'];
-    $query   = "SELECT * FROM tb_users WHERE nik='$nik'";
-    $hasil   = mysqli_query($con, $query);
-    $data    = mysqli_fetch_array($hasil);
+    $query = "SELECT * FROM tb_users WHERE nik='$nik'";
+    $hasil = mysqli_query($con, $query);
+    $data = mysqli_fetch_array($hasil);
   } else {
     die("Error. No Kode Selected! ");
   }
@@ -35,11 +35,11 @@
 
       echo "<div class='register-logo'><b>scan cuti</b> Successful!</div>
 				<div class='register-box-body'>
-					<p>Cuti " . $data['nama_peg'] . " Berhasil di update</p>
+					<p>Cuti " . $data['nama_kry'] . " Berhasil di update</p>
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-admin.php?page=form-master-pegawai' class='btn btn-primary btn-block btn-flat'>Next >></button>
+							<button type='button' onclick=location.href='home-admin.php?page=form-master-karyawan' class='btn btn-primary btn-block btn-flat'>Next >></button>
 						</div>
 					</div>
                 </div>";
@@ -47,7 +47,7 @@
     }
     echo "<div class='register-logo'><b>Oops!</b> 404 Error Server.</div>
             <div class='col-xs-4'>
-            <button type='button' onclick=location.href='home-admin.php?page=form-master-pegawai' class='btn btn-primary btn-block btn-flat'>Next >></button>
+            <button type='button' onclick=location.href='home-admin.php?page=form-master-karyawan' class='btn btn-primary btn-block btn-flat'>Next >></button>
           </div>";
   }
   mysqli_close($con);

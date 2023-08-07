@@ -17,7 +17,7 @@
 						<thead>
 							<tr>
 								<th>Tgl Pengajuan</th>
-								<th>Nama Pegawai</th>
+								<th>Nama Karyawan</th>
 								<th>Jenis Cuti</th>
 								<th>Jumlah Hari</th>
 								<th>Keterangan Cuti</th>
@@ -37,20 +37,36 @@
 								$dep = ($row['depApproval'] === '1') ? 'Disetujui' : (($row['depApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
 								$sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
 								$nikPemohon = $row['nik'];
-								$query = mysqli_query($con, "SELECT nama_peg from tb_users where nik='$nikPemohon'");
+								$query = mysqli_query($con, "SELECT nama_kry from tb_users where nik='$nikPemohon'");
 								$data = mysqli_fetch_assoc($query)
-							?>
+									?>
 								<tr>
-                                    <td><?= $date ?></td>
-									<td><?= $data['nama_peg'] ?></td>
-									<td><?= $row['jenis_cuti'] ?></td>
-									<td><?= $row['lama'] ?> Hari</td>
-									<td><?= $row['alasan'] ?></td>
-									<td><?= $row['mulai'] ?></td>
-									<td><?= $row['selesai'] ?></td>
-									<td><?= $sdm ?></td>
+									<td>
+										<?= $date ?>
+									</td>
+									<td>
+										<?= $data['nama_kry'] ?>
+									</td>
+									<td>
+										<?= $row['jenis_cuti'] ?>
+									</td>
+									<td>
+										<?= $row['lama'] ?> Hari
+									</td>
+									<td>
+										<?= $row['alasan'] ?>
+									</td>
+									<td>
+										<?= $row['mulai'] ?>
+									</td>
+									<td>
+										<?= $row['selesai'] ?>
+									</td>
+									<td>
+										<?= $sdm ?>
+									</td>
 								</tr>
-							<?php
+								<?php
 							} ?>
 						</tbody>
 					</table>
@@ -60,18 +76,18 @@
 	</div>
 </section>
 <script>
-	document.getElementById('exportButton').addEventListener('click', function() {
+	document.getElementById('exportButton').addEventListener('click', function () {
 		const table = document.getElementById('example2');
 		const tableHTML = table.outerHTML;
 
 		// Kirim data tabel ke server untuk konversi ke PDF
 		fetch('export-pdf.php', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-				},
-				body: 'tableHTML=' + encodeURIComponent(tableHTML)
-			})
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: 'tableHTML=' + encodeURIComponent(tableHTML)
+		})
 			.then(response => response.blob())
 			.then(blob => {
 				// Buat objek URL untuk hasil blob PDF
@@ -82,7 +98,7 @@
 				// newTab.location.href = pdfUrl; // Opsional: Buka PDF di tab yang sama
 
 				// Hapus objek URL setelah PDF ditutup atau diunduh
-				newTab.onbeforeunload = function() {
+				newTab.onbeforeunload = function () {
 					URL.revokeObjectURL(pdfUrl);
 				};
 			})
@@ -99,7 +115,7 @@
 		// Jika pengguna mengklik "Cancel", return false agar form tidak dikirimkan
 		return result;
 	}
-	$(function() {
+	$(function () {
 		$("#example1").DataTable();
 		$('#example2').DataTable({
 			"paging": true,

@@ -19,9 +19,9 @@ $jmlapprove = mysqli_num_rows($approve);
 $wait = mysqli_query($con, "SELECT * FROM tb_cuti WHERE sdmApproval IS NULL OR depApproval IS NULL");
 $jmlwait = mysqli_num_rows($wait);
 
-// mencari total pegawai
-$pegawai = mysqli_query($con, "SELECT * FROM tb_users");
-$jmlpegawai = mysqli_num_rows($pegawai);
+// mencari total karyawan
+$karyawan = mysqli_query($con, "SELECT * FROM tb_users");
+$jmlkaryawan = mysqli_num_rows($karyawan);
 ?>
 <section class="content">
 	<div class="row">
@@ -64,7 +64,7 @@ $jmlpegawai = mysqli_num_rows($pegawai);
 		<div class="col-lg-3 col-xs-6">
 			<div class="small-box bg-red">
 				<div class="inner">
-					<h3><?php echo $jmlpegawai; ?></h3>
+					<h3><?php echo $jmlkaryawan; ?></h3>
 					<p>Total Karyawan</p>
 				</div>
 				<div class="icon">

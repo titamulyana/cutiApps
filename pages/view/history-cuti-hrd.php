@@ -1,7 +1,7 @@
 <section class="content-header">
 	<h1>History<small>Cuti</small></h1>
 	<ol class="breadcrumb">
-		<li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+		<li><a href="home-karyawan.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
 		<li class="active">History Cuti</li>
 	</ol>
 </section>

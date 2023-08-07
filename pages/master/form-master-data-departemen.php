@@ -18,9 +18,9 @@ $departemen = mysqli_query($con, 'SELECT * from tb_departemen');
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><i class="fa fa-plus"></i> Add Data Departemen<a data-toggle="collapse" data-target="#formpegawai" href="#formpegawai" class="collapsed"></a></h4>
+                                <h4 class="panel-title"><i class="fa fa-plus"></i> Add Data Departemen<a data-toggle="collapse" data-target="#formkaryawan" href="#formkaryawan" class="collapsed"></a></h4>
                             </div>
-                            <div id="formpegawai" class="panel-collapse collapse">
+                            <div id="formkaryawan" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <form action="home-admin.php?page=master-departemen" class="form-horizontal" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">

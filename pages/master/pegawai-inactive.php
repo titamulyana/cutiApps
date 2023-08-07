@@ -10,8 +10,8 @@ include "dist/koneksi.php";
 //fungsi kode otomatis
 $departemen = mysqli_query($con, 'SELECT * from tb_departemen');
 $jabatan = mysqli_query($con, 'SELECT * from tb_jabatan');
-$atasan = mysqli_query($con, 'SELECT * FROM tb_users WHERE tb_users.hak_akses = "pegawai"');
-$pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, departemen, status, telp from tb_users WHERE soft_delete = '1'");
+$atasan = mysqli_query($con, 'SELECT * FROM tb_users WHERE tb_users.hak_akses = "karyawan"');
+$karyawan = mysqli_query($con, "SELECT nik, nama_kry, jk, username, jabatan, departemen, status, telp from tb_users WHERE soft_delete = '1'");
 ?>
 
 <section class="content">
@@ -34,19 +34,35 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
             </thead>
             <tbody>
               <?php
-              while ($peg = mysqli_fetch_array($pegawai)) {
-              ?>
+              while ($peg = mysqli_fetch_array($karyawan)) {
+                ?>
                 <tr>
-                  <td><?php echo $peg['nik']; ?></td>
-                  <td><?php echo $peg['nama_peg']; ?></td>
-                  <td><?php echo $peg['username']; ?></td>
-                  <td><?php echo $peg['jk']; ?></td>
-                  <td><?php echo $peg['jabatan']; ?></td>
-                  <td><?php echo $peg['departemen']; ?></td>
-                  <td><?php echo $peg['status']; ?></td>
-                  <td><?php echo $peg['telp']; ?></td>
+                  <td>
+                    <?php echo $peg['nik']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['nama_kry']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['username']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['jk']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['jabatan']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['departemen']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['status']; ?>
+                  </td>
+                  <td>
+                    <?php echo $peg['telp']; ?>
+                  </td>
                 </tr>
-              <?php
+                <?php
               }
               ?>
             </tbody>
@@ -57,7 +73,7 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
   </div>
 </section>
 <script>
-  $(function() {
+  $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,
@@ -72,8 +88,9 @@ $pegawai = mysqli_query($con, "SELECT nik, nama_peg, jk, username, jabatan, depa
 <!-- datepicker -->
 <script type="text/javascript" src="plugins/datepicker/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="plugins/datepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="plugins/datepicker/js/locales/bootstrap-datetimepicker.id.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../../dist/js/pages/form-pegawai.js"></script>
+<script type="text/javascript" src="plugins/datepicker/js/locales/bootstrap-datetimepicker.id.js"
+  charset="UTF-8"></script>
+<script type="text/javascript" src="../../dist/js/pages/form-karyawan.js"></script>
 <script type="text/javascript">
   // $(document).ready(function() {
   // 	$('.selectpicker').select2();

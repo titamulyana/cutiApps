@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>Permohonan<small>Cuti</small></h1>
   <ol class="breadcrumb">
-    <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+    <li><a href="home-karyawan.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
     <li class="active">Permohonan Cuti</li>
   </ol>
 </section>
@@ -21,7 +21,7 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
+							<button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
 						</div>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
                   <div class='row'>
                     <div class='col-xs-8'></div>
                     <div class='col-xs-4'>
-                      <button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
+                      <button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
                     </div>
                   </div>
                 </div>
@@ -59,7 +59,7 @@
                   <div class='row'>
                     <div class='col-xs-8'></div>
                     <div class='col-xs-4'>
-                      <button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
+                      <button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
                     </div>
                   </div>
                 </div>
@@ -80,7 +80,7 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
+							<button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
 						</div>
 					</div>
 				</div>
@@ -108,7 +108,7 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
+							<button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>Back</button>
 						</div>
 					</div>
 				</div>
@@ -124,6 +124,7 @@
         $queryCuti = "INSERT INTO tb_cuti (nik, jenis_cuti, mulai, selesai, lama, alasan, depApproval,depApproval_at)
         VALUES ('$nik', '$jenis', '$mulai', '$selesai', '$jml_hari', '$alasan', 1, now())";
       } else {
+        echo "masuk kesini";
         $queryCuti = "INSERT INTO tb_cuti (nik, jenis_cuti, mulai, selesai, lama, alasan)
         VALUES ('$nik', '$jenis', '$mulai', '$selesai', '$jml_hari', '$alasan')";
       }
@@ -136,7 +137,7 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-pegawai.php' class='btn btn-block btn-warning'>Done</button>
+							<button type='button' onclick=location.href='home-karyawan.php' class='btn btn-block btn-warning'>Done</button>
 						</div>
 					</div>
 				</div>
@@ -149,7 +150,7 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>back</button>
+							<button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>back</button>
 						</div>
 					</div>
 				</div>
@@ -163,7 +164,7 @@
 					<div class='row'>
 						<div class='col-xs-8'></div>
 						<div class='col-xs-4'>
-							<button type='button' onclick=location.href='home-pegawai.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>back</button>
+							<button type='button' onclick=location.href='home-karyawan.php?page=form-permohonan-cuti-tahunan' class='btn btn-block btn-warning'>back</button>
 						</div>
 					</div>
 				</div>

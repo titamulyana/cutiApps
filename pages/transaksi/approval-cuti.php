@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>Approval<small>Cuti</small></h1>
   <ol class="breadcrumb">
-    <li><a href="home-pegawai.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+    <li><a href="home-karyawan.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
     <li class="active">Approval Cuti</li>
   </ol>
 </section>
@@ -71,38 +71,62 @@
 
                 $sdm = ($row['sdmApproval'] === '1') ? 'Disetujui' : (($row['sdmApproval'] === '0') ? 'Ditolak' : 'Menunggu Persetujuan');
                 $nikPemohon = $row['nik'];
-                $query = mysqli_query($con, "SELECT nama_peg from tb_users where nik='$nikPemohon'");
+                $query = mysqli_query($con, "SELECT nama_kry from tb_users where nik='$nikPemohon'");
                 $data = mysqli_fetch_assoc($query)
-              ?>
+                  ?>
                 <tr>
-                  <td><?= $data['nama_peg'] ?></td>
-                  <td><?= $row['nik'] ?></td>
-                  <td><?= $date ?></td>
-                  <td><?= $row['lama'] ?></td>
-                  <td><?= $row['alasan'] ?></td>
-                  <td><?= $row['mulai'] ?></td>
-                  <td><?= $row['selesai'] ?></td>
-                  <td><?= $row['jenis_cuti'] ?></td>
-                  <td><?= $status ?></td>
                   <td>
-                    <form action="home-pegawai.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                    <?= $data['nama_kry'] ?>
+                  </td>
+                  <td>
+                    <?= $row['nik'] ?>
+                  </td>
+                  <td>
+                    <?= $date ?>
+                  </td>
+                  <td>
+                    <?= $row['lama'] ?>
+                  </td>
+                  <td>
+                    <?= $row['alasan'] ?>
+                  </td>
+                  <td>
+                    <?= $row['mulai'] ?>
+                  </td>
+                  <td>
+                    <?= $row['selesai'] ?>
+                  </td>
+                  <td>
+                    <?= $row['jenis_cuti'] ?>
+                  </td>
+                  <td>
+                    <?= $status ?>
+                  </td>
+                  <td>
+                    <form action="home-karyawan.php?page=approval-cuti-karyawan" class="form-horizontal" method="POST"
+                      enctype="multipart/form-data">
                       <input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
                       <input type="hidden" value="setujui" name="approval">
-                      <button type="submit" name="save" value="save" <?php if ($dep !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-success" onclick="return confirm('Apakah anda yakin akan menyetujui permohan cuti <?= $data['nama_peg'] ?>?')">
+                      <button type="submit" name="save" value="save" <?php if ($dep !== 'Menunggu Persetujuan')
+                        echo "disabled"; ?> class="btn btn-success"
+                        onclick="return confirm('Apakah anda yakin akan menyetujui permohan cuti <?= $data['nama_kry'] ?>?')">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </form>
                   </td>
                   <td>
-                    <form action="home-pegawai.php?page=approval-cuti-pegawai" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                    <form action="home-karyawan.php?page=approval-cuti-karyawan" class="form-horizontal" method="POST"
+                      enctype="multipart/form-data">
                       <input type="hidden" value="<?= $row['id'] ?>" name="idcuti">
                       <input type="hidden" value="tolak" name="approval">
-                      <button name="save" value="save" type="submit" <?php if ($dep !== 'Menunggu Persetujuan') echo "disabled"; ?> class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menolak permohan cuti <?= $data['nama_peg'] ?>')">
+                      <button name="save" value="save" type="submit" <?php if ($dep !== 'Menunggu Persetujuan')
+                        echo "disabled"; ?> class="btn btn-danger"
+                        onclick="return confirm('Apakah anda yakin akan menolak permohan cuti <?= $data['nama_kry'] ?>')">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                       </button>
                     </form>
                   </td>
                 </tr>
-              <?php
+                <?php
               } ?>
             </tbody>
           </table>
@@ -112,18 +136,18 @@
   </div>
 </section>
 <script>
-  document.getElementById('exportButton').addEventListener('click', function() {
+  document.getElementById('exportButton').addEventListener('click', function () {
     const table = document.getElementById('example1');
     const tableHTML = table.outerHTML;
 
     // Kirim data tabel ke server untuk konversi ke PDF
     fetch('export-pdf.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'tableHTML=' + encodeURIComponent(tableHTML)
-      })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'tableHTML=' + encodeURIComponent(tableHTML)
+    })
       .then(response => response.blob())
       .then(blob => {
         // Buat objek URL untuk hasil blob PDF
@@ -134,7 +158,7 @@
         // newTab.location.href = pdfUrl; // Opsional: Buka PDF di tab yang sama
 
         // Hapus objek URL setelah PDF ditutup atau diunduh
-        newTab.onbeforeunload = function() {
+        newTab.onbeforeunload = function () {
           URL.revokeObjectURL(pdfUrl);
         };
       })
@@ -151,7 +175,7 @@
     // Jika pengguna mengklik "Cancel", return false agar form tidak dikirimkan
     return result;
   }
-  $(function() {
+  $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,

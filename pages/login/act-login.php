@@ -1,20 +1,20 @@
 <div class="login-box">
-<?php
+	<?php
 	include "dist/koneksi.php";
-	$nik		= $_POST['nik'];
-	$password		= $_POST['password'];
-	$op 			= $_GET['op'];
+	$nik = $_POST['nik'];
+	$password = $_POST['password'];
+	$op = $_GET['op'];
 
-	if($op=="in"){
-		$sql = mysqli_query($con,"SELECT * FROM tb_users WHERE nik='$nik' AND password='$password'");
-		if(mysqli_num_rows($sql)==1){
+	if ($op == "in") {
+		$sql = mysqli_query($con, "SELECT * FROM tb_users WHERE nik='$nik' AND password='$password'");
+		if (mysqli_num_rows($sql) == 1) {
 			$qry = mysqli_fetch_array($sql);
 			$_SESSION['nik'] = $qry['nik'];
-			$_SESSION['nama_peg'] = $qry['nama_peg'];
+			$_SESSION['nama_kry'] = $qry['nama_kry'];
 			$_SESSION['hak_akses'] = $qry['hak_akses'];
-			
-			if($qry['soft_delete']==1){
-            echo "<div class='register-logo'><b>Oops!</b> User Tidak Aktif.</div>	
+
+			if ($qry['soft_delete'] == 1) {
+				echo "<div class='register-logo'><b>Oops!</b> User Tidak Aktif.</div>	
 				<div class='register-box-body'>
 					<p>Harap tunggu beberapa saat, atau silahkan hubungi Admin Anda.</p>
 					<div class='row'>
@@ -24,18 +24,14 @@
 						</div>
 					</div>
 				</div>";
-			}
-			else if($qry['hak_akses']=="hrd"){
+			} else if ($qry['hak_akses'] == "hrd") {
 				header("location:home-admin.php");
-			}
-			else if($qry['hak_akses']=="pegawai"){
-				header("location:home-pegawai.php");
-			}
-			else if($qry['hak_akses']=="HRD"){
+			} else if ($qry['hak_akses'] == "karyawan") {
+				header("location:home-karyawan.php");
+			} else if ($qry['hak_akses'] == "HRD") {
 				header("location:home-hrd.php");
 			}
-		}
-		else{
+		} else {
 			echo "<div class='register-logo'><b>Oops!</b> Login Failed.</div>	
 				<div class='register-box-body'>
 					<p>Email atau Password tidak sesuai. Silahkan diulang kembali.</p>
@@ -47,10 +43,11 @@
 					</div>
 				</div>";
 		}
-	}else if($op=="out"){
-		unset($_SESSION['id_user']);
+	} else if ($op == "out") {
+		unset($_SESSION['nik']);
 		unset($_SESSION['hak_akses']);
+		unset($_SESSION['nama_kry']);
 		header("location:index.php");
 	}
-?>
+	?>
 </div>
